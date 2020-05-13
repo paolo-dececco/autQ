@@ -1,0 +1,305 @@
+\documentclass[12pt,a4paper,openright]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{newlfont}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{De Cecco Paolo}
+
+%Impostazioni pagina
+\pagestyle{fancy}
+\fancyhead[L]{}
+\addtolength{\headwidth}{20pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+% Comandi personalizzati
+\newcommand{\aut}{ \mbox{Aut} ( \mathbb{Q},< ) } %Automorfismi d'ordine di Q
+\newcommand{\Q}{\mathbb{Q}} %Insieme dei razionali
+\newcommand{\R}{\mathbb{R}} %Insieme dei reali
+\newcommand{\Gsp}{$G$-spazio } %G-spazio
+\newcommand{\stab}[1]{G_{#1}}   %Stabilizzatori (l'argomento può essere un punto o un insieme)
+
+% Comandi per teoremi
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}[chapter]
+\newtheorem{oss}[defn]{Osservazione}
+\newtheorem{es}[defn]{Esempio}
+
+\theoremstyle{plain}
+\newtheorem{theo}[defn]{Teorema}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollario}
+\newtheorem{prop}[defn]{Proposizione}
+
+%Comandi per riferimento incrociato
+\crefname{es}{Esempio}{Esempi}
+\crefname{lem}{Lemma}{Lemmi}
+\crefname{oss}{Osservazione}{Osservazioni}
+
+\setcounter{equation}{0}
+
+
+
+\begin{document}
+
+\input{Intestazione.tex}
+
+
+
+\chapter{Automorfismi d'ordine di $\Q$}
+
+In questo primo capitolo si introduce l'insieme degli automorfismi d'ordine dei razionali attraverso una definizione basata sulle nozioni di insieme totalmente ordinato e di morfismo di insiemi. In seguito si analizzano le proprietà dell'insieme, che con l'operazione di composizione assume una struttura di gruppo, a partire dalla sua azione sull'insieme dai razionali. 
+
+\section{Isomorfismi d'ordine}
+
+\begin{defn}[Insieme totalmente ordinato]
+Un insieme totalmente ordinato è una coppia $(A,<)$ dove $A$ è un insieme non vuoto e $<$ è una relazione binaria che soddisfa le proprietà:
+\begin{enumerate}
+\item per ogni $x \in A$, si ha $x \nless x$ (Irriflessività);
+\item per ogni $x,y \in A$, si ha che $x<y \mbox{ implica } y \nless x$ (Antisimmetria);
+\item per ogni $x,y,z \in A$, se $x<y \mbox{ e } y<z$, allora $x<z$ (Transitività);
+\item per ogni $x,y \in A$, vale solo una delle proprietà: $x<y,x=y,y<x$ (Linearità).
+\end{enumerate}
+\end{defn}
+
+\begin{oss}
+La coppia $(\Q,<)$, dove $\Q$ è l'insieme dei numeri razionali e $<$ è l'ordine naturale su $\Q$, è un insieme totalmente ordinato.
+\end{oss}
+
+In realtà si possono definire due ulteriori proprietà delle quali gode l'insieme $(\Q,<)$ che sono l'essere \textit{denso} e \textit{senza estremi}.
+
+\begin{defn}[Insieme denso]
+Un insieme totalmente ordinato è \textit{denso} se per $x,y \in A$ con $x<y,$ esiste $z \in A \mbox{ tale che } x<z<y$.
+\end{defn}
+\begin{defn}[Insieme senza estremi]
+Un insieme totalmente ordinato è \textit{senza estremi} se per $x \in A$ esistono $y,z \in A \mbox{ tali che } y<x<z$.
+\end{defn}
+
+È facile intuire che le funzioni che conservano l'ordine hanno una certa importanza nella trattazione degli insiemi totalmente ordinati. Si dà quindi la definzione di una particolare famiglia di queste funzioni: gli isomorfismi d'ordine.
+
+\begin{defn}[Isomorfismo d'ordine]
+Siano $(A,<_A) \mbox{ e } (B,<_B)$ due insiemi totalmente ordinati. Un \textit{isomorfismo d'ordine} è una mappa $\varphi: A \rightarrow B$ biettiva e tale che per ogni $x,y \in A, x<_Ay \mbox{ se e solo se } \varphi(x)<_B\varphi(y)$.
+\end{defn}
+
+A questo punto si possiedono tutti gli strumenti necessari per definire l'insieme $\aut$.
+\begin{defn}
+La famiglia degli automorfismi d'ordine dell'insieme dei numeri nazionali è l'insieme
+\[ \aut = \left\lbrace \varphi \mid \varphi: \Q \rightarrow \Q, \varphi \mbox{ isomorfismo d'ordine} \right\rbrace \]
+\end{defn}
+\begin{oss}
+L'insieme $\aut$ dotato dell'operazione di composizione è un gruppo. Infatti:
+\begin{itemize}
+\item per ogni $f,g \in \aut , f \circ g$ è biettiva e $f(g(x))<f(g(y)) \Leftrightarrow g(x)<g(y) \Leftrightarrow x<y$, quindi $f \circ g \in \aut$.
+\item $Id_{\Q} \in \aut$ ed è l'elemento neutro del gruppo.
+\item se $f \in \aut$ allora $f^{-1}$ è biettiva e $f^{-1}(x)<f^{-1}(y) \Leftrightarrow f(f^{-1}(x))<f(f^{-1}(y)) \Leftrightarrow x<y$, quindi $f^{-1} \in \aut$.
+\end{itemize}
+\end{oss}
+
+[introduzione al capitolo successivo sull'azione di gruppi]
+
+\section{Azione di gruppi}
+[A parole cosa sono le azioni di gruppi]
+
+\begin{defn}[Azione di gruppi]
+Siano $G$ un gruppo e $\Omega$ un insieme. Un azione di $G$ su $\Omega$ è una mappa:
+\[\begin{tabular}{ccc}
+$\Omega \times G$ & $\rightarrow$ & $\Omega$ \\ 
+$(\omega,g)$ & $\mapsto$ & $\omega^g$
+\end{tabular}\]
+tale che:
+\begin{enumerate}
+\item per ogni $g,h \in G$ e $\omega \in \Omega$ si ha $(\omega^g)^h=\omega^{gh}$.
+\item per ogni $\omega \in \Omega$ si ha $\omega^1=\omega$ dove $1$ è l'elemento neutro del gruppo $G$.
+\end{enumerate}
+Se $G$ agisce su $\Omega$, allora $\Omega$ è detto \Gsp.
+\end{defn}
+
+Si riporta, a titolo di esempio, una famosa azione di gruppi.
+\begin{es}[Rappresentazione di Cayley] 
+Sia $G$ un gruppo e sia $\Omega := G$. Si definisce un'azione di $G$ su se stesso attraverso la moltiplicazione destra, cioè ponendo $\omega^g:=\omega g$, dove $\omega,\omega g \in \Omega$ e $g \in G$. \newline È possibile verificare che quella ottenuta è un azione di gruppo indipendentemente dalla scelta di $G$: infatti per ogni $\omega \in \Omega$ e $g,h \in G$ si ha che $wg \in \Omega$ (in quanto $\Omega=G$) e quindi $(\omega^g)^h=\omega^{gh}=\omega gh \in \Omega$. Inoltre $\omega^1=\omega 1=\omega$.
+Tale azione di gruppo è detta \textit{rappresentazione di Cayley}.
+\end{es}
+\begin{defn}[Orbita di un elemento]
+Sia $\Omega$ un \Gsp. L'\textit{orbita} di un elemento $\omega \in \Omega$ è l'insieme
+\[\omega^G := \left\lbrace \omega^g \mid g \in G \right\rbrace \]
+\end{defn}
+
+\begin{oss} In ogni \Gsp $\Omega$ si può definire in questo modo una nuova relazione binaria per la quale due elementi sono in relazione se e solo se stanno nella stessa orbita:
+\begin{equation}
+\label{eq:orbits} \alpha \sim \beta \mbox{ se e solo se esiste } g \in G \mbox{ tale che } \alpha^g=\beta 
+\end{equation}
+Il seguente teorema mostra che tale relazione è di equivalenza. Le classi di equivalenza sono dette orbite di $G$ su $\Omega$.
+\end{oss}
+
+\begin{theo}
+Ogni \Gsp $\Omega$ si esprime in modo unico come unione disgiunta di orbite. \\
+Equivalentemente la relazione binaria~\eqref{eq:orbits} è una relazione di equivalenza.
+\end{theo}
+\begin{proof}
+In primo luogo si mostra che per ogni $\alpha,\beta \in \Omega$, $\alpha^G \cap \beta^G \neq \emptyset$ implica $\alpha^G=\beta^G$. Supponiamo $\gamma \in \alpha^G \cap  \beta^G$. Allora $\gamma = \alpha^{g_1}=\beta^{g_2}$ per qualche $g_1,g_2 \in G$. In tal caso $\alpha=\beta^{g_2g_1^{-1}}$, cioè $\alpha \in \beta^G$ e quindi $\alpha^G \subseteq \beta^G$. Analogamente è valida l'inclusione inversa. Allora $\alpha^G=\beta^G$. \\
+Si dimostra ora la seconda parte del teorema. Sia $\sim$ la relazione~\eqref{eq:orbits}. Allora valgono le seguenti proprietà:
+\begin{itemize}
+\item $\alpha \sim \alpha$ poichè $\alpha=\alpha^1$.
+\item Se $\alpha \sim \beta$ allora $a^{g_1}=\beta$. Se $g_1 \in G$ allora $g_1^{-1} \in G$, perciò $\alpha=\beta^{g_1^{-1}}$ e cioè $\beta \sim 	\alpha$.
+\item Se $\alpha \sim \beta$ e $\beta \sim \gamma$ allora $\beta=\alpha^{g_1}$ e $\gamma=\beta^{g_2}$, cioè $\gamma=(\alpha^{g_1})^{g_2}=\alpha^{g_1g_2}$, quindi $\alpha \sim \gamma$.
+\end{itemize}
+Dunque $\sim$ è una relazione di equivalenza. \\
+Viceversa se $\sim$ è una relazione di equivalenza che formalizza lo ``stare nella stessa orbita" allora la proprietà transitiva assicura che le orbite siano tra loro disgiunte. La proprietà riflessiva assicura che ogni elemento stia almeno in un'orbita.
+\end{proof}
+Questo teorema permette di vedere che le orbite degli elementi di $\Omega$ formano una partizione dello spazio indotta dall'azione di $G$. In realtà si può fare molto di più: infatti a partire da un gruppo $G$ è possibile costruire da zero un nuovo spazio aggiungendo, volta per volta, un elemento $\alpha$ e la sua relativa orbita. Se l'elemento è già comparso in un altra orbita, allora le orbite coincidono. Per il teorema uno spazio costruito in questo modo è un \Gsp.\\
+
+{\setlength{\parindent}{0cm} Nella prossima sezione andiamo a studiare un particolare caso di G-spazi, gli spazi transitivi.}
+
+\section{Spazi transitivi}
+\begin{defn}[Spazio transitivo]
+Sia $\Omega$ un \Gsp. Diciamo che $G$ \textit{agisce transitivamente} su $\Omega$ o che $\Omega$ è un \textit{\Gsp transitivo} se $\alpha^G:=\Omega$ per ogni $\alpha \in \Omega$.
+\end{defn}
+Chiaramente un \Gsp transitivo è costituito da una sola orbita. Vediamo ora un paio di esempi sugli spazi transitivi che saranno utili in seguito.
+\begin{es} \label{es:cayleygen}
+Sia $G$ un gruppo che agisce su se stesso tramite la rappresentazione di Cayley. Tale azione è chiaramente transitiva in quanto per ogni $\alpha \in G$ e per ogni $ g \in G$ si ha $ \alpha^g=\nobreak\alpha g \in\nobreak G$.\\
+Più in generale, preso $H$ un sottogruppo di $G$, consideriamo $\Omega$ l'insieme delle classi laterali destre di $H$. Tale insieme è un \Gsp transitivo in quanto per ogni $\alpha$ e $\beta$ in $\Omega$ si ha che $\alpha^{-1}\beta \in G$ e quindi $H\beta=(H\alpha)^{\alpha^{-1}\beta}$. La rappresentazione di Cayley è un caso particolare per $H=\{1\}.$
+\end{es}
+\begin{es}\label{es:azionegl}
+Sia $\Omega=\R^2$ e $G=GL(2,\R)$. L'azione di $GL(2,\R)$ su $\R^2$ non è transitiva.
+Infatti l'origine di $\R^2$ non può essere mandata in elementi non nulli di $\R^2$ tramite una matrice non singolare. \\
+D'altra parte, tutti gli altri elementi di $\R^2$ giacciono in una unica orbita: basta osservare innanzitutto che le matrici associate ad una rotazione di centro l'origine e angolo $\theta \in [0,2\pi]$ e le omotetie di parametro $\lambda \neq 0$ stanno tutte in $GL(2,\R)$. Inoltre per ogni $(x,y),(u,v) \in \R^2$ non nulli, posso sempre trovare la matrice che manda $(x,y)$ in $(u,v)$ componendo una rotazione con una omotetia.
+Dunque in $\R^2$ visto come $GL(2,\R)$-spazio ci sono esattamente due orbite:$\{(0,0)\}$ e $\R^2 \backslash \{(0,0)\}$.
+\end{es}
+\begin{defn}[G-morfismo]
+Siano $\Omega$ e $\Omega'$ due $G$-spazi. Una mappa $\varphi : \Omega \rightarrow \Omega'$ è un $G$-morfismo se per ogni $\omega \in \Omega$ e $g \in G$:
+\[\varphi (\omega^g)=(\varphi (\omega))^g\]
+Se $\varphi$ è biettiva allora è detta $G$-isomorfismo.
+\end{defn}
+\begin{defn}[Stabilizzatore di un punto]
+Sia $\Omega$ un \Gsp. Per ogni $\alpha \in \Omega$ si definisce \textit{stabilizzatore di $\alpha$} in $G$ l'insieme
+\[G_{\alpha}:= \left\lbrace g \in G \mid \alpha^g=\alpha \right\rbrace \] 
+\end{defn}
+
+\begin{oss}
+$\stab{\alpha}$ è un sottogruppo di $G$.
+\end{oss}
+
+\begin{lem} \label{lem:lemma34}
+Se $g,h \in G$ si ha \[\stab{\alpha}g=\stab{\alpha}h \mbox{ se e solo se } \alpha^g=\alpha^h\]
+\end{lem}
+\begin{proof}
+$\stab{\alpha}g=\stab{\alpha}h$ se e solo se $gh^{-1} \in \stab{\alpha}$ se e solo se $\alpha^{gh^{-1}}=\alpha$ se e solo se $\alpha^g=\alpha^h$
+\end{proof}
+\begin{theo}
+Sia $\Omega$ un \Gsp transitivo. Allora $\Omega$ è $G$-isomorfo al \Gsp delle classi laterali destre di $\stab{\alpha}$ per ogni $\alpha \in \Omega$.
+\end{theo}
+\begin{oss}
+Si è già osservato nell'\cref{es:cayleygen} che l'insieme delle classi laterali destre di un sottogruppo di $G$ è sempre un \Gsp transitivo.
+\end{oss}
+\begin{proof}
+Si definisca una funzione $\theta : \Omega \rightarrow \{\stab{\alpha}a \mid a \in G\}$ tale che $\theta (\omega)=\stab{\alpha}g$ dove $g \in G$ in modo tale che $\omega=\alpha^g$. Si osservi che $g$ esiste in quanto $\Omega$ è transitivo, inoltre $\theta$ è ben definita per il \cref{lem:lemma34}. Sempre per il lemma si ha che $\theta$ è iniettiva: infatti se $\omega_1=\alpha^g$ e $\omega_2=\alpha^h$, allora $\stab{\alpha}g=\stab{\alpha}h \mbox{ solo se } \alpha^g=\alpha^h \mbox{ solo se } \omega_1=\omega_2$. Per definizione $\theta$ è anche suriettiva (Dato $g$, allora $\alpha^g=\omega$). Quindi $\theta$ è una biezione. \\
+Rimane da mostrare che $\theta$ è un $G$-morfismo. Per ogni $\omega \in \Omega$ sia $h \in G$ tale che $\alpha^h=\omega$. Allora per ogni $g \in G$ si ha \[\theta(\omega^g)=\theta(\alpha^{hg})=\stab{\alpha}hg=(\theta(\omega))^g\]
+\end{proof}
+
+Per un \Gsp di almeno $k$ elementi, la nozione di transitività può essere estesa
+prendendo al posto dei singoli elementi del \Gsp i sottoinsiemi di cardinalità fissata $k$. In questo modo si ottengono ulteriori proprietà del $G$-spazio.
+
+\begin{defn}[Spazio $k$-transitivo]
+Sia $k \in \mathbb{N}$. Un \Gsp è \textit{$k$-transitivo} (o l'azione di $G$ su $\Omega$ è $k$-transitiva) se per due insiemi qualsiasi di $k$ elementi distinti di $\Omega$ $\{\alpha_1,\alpha_2,\ldots,\alpha_k\}$, $\{\beta_1,\beta_2,\ldots,\beta_k\}$ esiste $g \in G$ tale che $\alpha_i^g=\beta_i$ per $i=1,\ldots,k$.
+\end{defn}
+\begin{oss}
+Un \Gsp 1-transitivo è semplicemente uno spazio transitivo. \\
+Un \Gsp $k$-transitivo è $(k-1)$-transitivo poichè per due insiemi qualsiasi di $k-1$ elementi distinti di $\Omega$ si aggiunge a ciascuno dei due insiemi un elemento di $\Omega$ distinto dagli altri e si conclude con la $k$-transitività.
+\end{oss}
+Il seguente controesempio mostra che uno spazio transitivo non necessariamente è uno spazio 2-transitivo.
+\begin{es}[Azione di $GL(2,\R)$ su $\R^2\backslash \{(0,0)\}$ ]
+Nell'\cref{es:azionegl} si è visto che l'azione di $GL(2,\R)$ su $\R^2\backslash \{(0,0)\}$ è transitiva.\\
+Tuttavia questa azione non è 2-transitiva in quanto non esiste una matrice in $GL(2,\R)$ che mandi contemporaneamente l'elemento $(x,0)$ in se stesso e l'elemento $(0,y)$ (con $y \neq x$) in $(y,0)$.
+\end{es}
+
+Infine introduciamo un indebolimento delle nozioni di transitività e $k$-transitività.
+
+\begin{defn}[Spazio $k$-omogeneo]
+Sia $k \in \mathbb{N}$. Un \Gsp $\Omega$ è \textit{$k$-omogeneo} se per qualsiasi $\Gamma,\Delta \subseteq \Omega$ con $|\Gamma|=|\Delta|=k$ si ha $\Gamma^g=\Delta$ per qualche $g \in G$.
+\end{defn}
+
+\begin{oss} \label{os:auttrans}
+Un \Gsp 1-omogeneo è transitivo. Come per la transitività, un \Gsp $k$-omogeneo è $(k-1)$-omogeneo.
+\end{oss}
+
+\begin{oss}
+Chiedere la $k$-transitività è una richiesta più forte rispetto alla $k$-omogeneità: infatti entrambe le definizioni vengono date per insiemi di cardinalità $k$, ma nella $k$-transitività la scelta di $g \in G$ dipende anche dall'ordine degli elementi nei due insiemi, cosa che non è richiesta nella $k$-omogeneità.\\ 
+In pratica la nozione di $k$-transitività di un \Gsp può essere vista come la proprietà per cui date due qualsiasi n-uple ordinate di elementi di $\Omega$ esiste una $g \in G$ che manda un'ennupla nell'altra.
+\end{oss}
+
+\section{Prime proprietà di $\aut$}
+
+\begin{theo}
+L'azione di $\aut$ su $\Q$ è $k$-omogenea per ogni $k \in \mathbb{N}$.
+\end{theo}
+\begin{proof}
+Siano $\Gamma,\Delta$ due sottoinsiemi finiti di $\Q$ di cardinalità $k$. Costruiamo esplicitamente $\varphi$ un automorfismo d'ordine di $\Q$ tale che $\varphi(\Gamma)=\Delta$. \\
+Numeriamo gli elementi di $\Gamma$ e $\Delta$ in base al loro ordine naturale, siano quindi:
+\[\Gamma=\{x_1,\ldots,x_n\} \mbox{ con } x_1<x_2<\ldots<x_n,\] 
+\[\Delta=\{y_1,\ldots,y_n\} \mbox{ con } y_1<y_2<\ldots<y_n.\]
+Siano ora $A_0,\ldots,A_n$ degli intevalli, con $A_0:=(-\infty,x_1)$, $A_n:=(x_n,+\infty)$ e $A_i:=(x_i,x_{i+1})$ per $i=1,\ldots,n-1$; analogamente siano $B_0,\ldots,B_n$ degli intevalli dove $B_0:=(-\infty,y_1)$, $B_n:=(y_n,+\infty)$ e $B_i:=(y_i,y_{i+1})$ per $i=1,\ldots,n-1$. \\
+Definiamo delle mappe $f_i:A_i \rightarrow B_i$ per $i=0,1,\ldots,n$ tali che:
+\[f_0:x \mapsto (x-x_1)+y_1\]
+\[f_i:x \mapsto \frac{y_{i+1}-y_1}{x_{i+1}-x_i} (x-x_i)+y_i\]
+\[f_n:x \mapsto (x-x_n)+y_n\]
+
+Sia allora $\varphi:\Q \rightarrow \Q$ tale che:
+\[\varphi(x_i)=y_i \mbox{ per } i=0,\ldots,k\]
+\[\varphi\mid_{A_i}(x)=f_i \mbox{ per } i=0,\ldots,k\]
+Tale $\varphi$ è un automorfismo d'ordine e $\varphi(\Gamma)=\Delta$.
+\end{proof}
+\begin{cor}
+L'azione di $\aut$ su $\Q$ è transitiva.
+\end{cor}
+\begin{proof}
+É un immediata conseguenza dell'\cref{os:auttrans}.
+\end{proof}
+\begin{prop}
+L'azione di $\aut$ su $\Q$ non è 2-transitiva.
+\end{prop}
+\begin{proof}
+Se l'azione fosse 2-transitiva, dati due numeri razionali distinti $\{p,q\}$ con $p<q$, dovrebbe esistere $\varphi$ un automorfismo di $\Q$ che mandi $p$ in $q$ e allo stesso tempo $q$ in $p$. Tale automorfismo non conserva l'ordine in quanto $q=\varphi(p)\nless \varphi(q)=p$.
+\end{proof}
+
+\chapter{Primitività e grafo orbitale di $\aut$}
+[In questo secondo capitolo introduciamo due nuovi concetti che ci permettono di analizzare più a fondo l'azione degli automorfismi]
+
+\section{Primitività di $\aut$}
+[Introduciamo la nozione di primitività]
+
+\begin{defn}[Blocco di un \Gsp transitivo]
+Sia $\Omega$ un \Gsp transitivo e sia $\Delta \subseteq \Omega$ con $\Delta \neq \emptyset$. Allora $\Delta$ è un \textit{blocco} se per ogni $g \in G$, $\Delta \cap \Delta^g = \emptyset$ implica $\Delta=\Delta^g$.
+\end{defn}
+\begin{oss} 
+In un \Gsp transitivo lo spazio stesso e i singoletti sono sempre dei blocchi. I blocchi di questo tipo sono detti \textit{banali}.
+\end{oss}
+\begin{defn} [Spazio primitivo]
+Sia $\Omega$ un \Gsp transitivo. $\Omega$ è un \Gsp \textit{primitivo} se ogni blocco di $\Omega$ è banale.
+\end{defn}
+Per i $G$-spazi primitivi in generale vale il seguente risultato:
+\begin{prop}
+Un \Gsp 2-omogeneo è primitivo.
+\end{prop}
+\begin{proof}
+Sia $\Delta$ un blocco di $\Omega$. Se $|\Delta|=1$ allora è un blocco banale. \\
+Siano $\alpha,\beta \in \Omega$ tali che $\{\alpha,\beta \} \subseteq \Delta$. Poichè $\Omega$ è 2-omogeneo, allora per ogni $\gamma \in \Omega$ esiste $g \in G$ tale che $\{ \alpha, \beta \}^g =\{\alpha,\gamma\}$. Dunque $\{\alpha,\gamma \} \subseteq \Delta^g$. Siccome $\alpha \in \Delta \cap \Delta^g$, allora $\Delta = \Delta^g$ e quindi $\gamma \in \Delta$. Poichè la scelta di $\gamma$ è arbitraria, allora $\Delta=\Omega$.
+\end{proof}
+Nel capitolo precedente è stato già mostrato che $\aut$ è 2-omogeneo, dunque il seguente corollario è un'immediata conseguenza della proposizione.
+\begin{cor}
+L'azione di $\aut$ su $\Q$ è primitiva.
+\end{cor}
+
+\section{Grafo orbitale di $\aut$}
+
+
+
+\end{document}

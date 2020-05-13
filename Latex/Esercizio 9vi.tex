@@ -1,0 +1,145 @@
+\documentclass[12pt,a4paper,draft]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Esercizi}
+\author{De Cecco Paolo}
+\begin{document}
+
+\maketitle
+%\section{Esercizio 4(ii)}
+%Considera l'azione di $S_n$ sull'insieme $\Omega^{\{2\}}$ descritta nell'esempio 3(h). L'azione è primitiva?
+%
+%\subsection*{Sviluppo:}
+%L'esempio 3(h) prende in considerazione l'azione di $S_n$ sull'insieme delle coppie non ordinate $\Omega^{\{2\}}$ con $\Omega=\{1,2,\ldots,n\}$ attraverso la rappresentazione $\{a,b\}^g=\{a^g,b^g\}$. \\
+%L'esempio ci dice che l'azione su $\Omega^{\{2\}}$ è transitiva perchè $S_n$ è 2-transitivo su $\Omega$.\medskip \newline
+%Mostriamo che l'azione è primitiva facendo vedere ogni blocco non banale è improprio (e questo implica che l'azione è primitiva per il Teorema 4.7 a pag 34 del Bhattacharjee).
+%Supponiamo quindi che $\Delta \in \Omega^{\{2\}}$ un blocco proprio (quindi $\vert \Delta \vert >1$) e siano $\{a,b\},\{c,d\} \in \Delta$. Per transitività $\exists h \in S_n \mbox{ t.c. } \{c,d\}=\{a,b\}^h$. Allora $\{c,d\} \in \Delta \cap \Delta^h$ quindi $\Delta=\Delta^h$. Sia ora 
+%
+%\section{Esercizio 5(ii)}
+%Descrivi le sottorbite e gli orbitali dell'azione di $GL(2,\mathbb{R})$ su $\mathbb{R}^2$
+%
+%\subsection*{Sviluppo:}
+%Pongo $\mathit{G}=GL(2,\mathbb{R})$. \\
+%Osserviamo immediatamente che l'azione non è transitiva: basta vedere che l'orbita dell'origine è il singoletto che la contiene e ovviamente non è tutto $\mathbb{R}^2$. \\
+%In realtà ci sono esattamente due orbite:infatti in $\mathit{G}$ sono contenute tutte le rotazioni di $\mathbb{R}^2$ centrate nell'origine e tutte le omotetie di vettori di $\mathbb{R}^2$. $\mathit{G}$ è un gruppo, dunque la loro composizione è ancora contenuta in $\mathit{G}$ e manda ogni vettore non nullo di $\mathbb{R}^2$ in un qualsiasi altro vettore non nullo. Allora l'altra orbita è $\mathbb{R}^2\backslash \{0 \}$. L'azione di $\mathit{G}$ su quest'ultimo spazio di conseguenza è transitiva.
+%
+%\subsubsection*{Sottorbite}
+%Vediamo chi sono gli elementi di $\mathit{G}_{\alpha}$: Posto $\alpha = 
+%\begin{pmatrix}
+%v_1 \\
+%v_2 \\
+%\end{pmatrix}$, 
+%\[\mathit{G}_{\alpha}=\left\lbrace
+%\begin{pmatrix}
+%a & b \\
+%c & d \\
+%\end{pmatrix} \mid a,b,c,d \in \mathbb{R},ad-bc\neq0 \mbox{ e } 
+%\begin{pmatrix}
+%v_1 \\
+%v_2 \\
+%\end{pmatrix} = 
+%\begin{pmatrix}
+%av_1 + bv_2 \\
+%cv_1 + dv_2 \\
+%\end{pmatrix}\right\rbrace\]
+%Allora possiamo riassumere le sottorbite di ogni elemento in questo schema:
+%
+%\begin{itemize}
+%\item \begin{tabular}{p{6.5 cm}p{8 cm}}
+%$\alpha=(0,0)$ & $\mathit{G}_{\alpha}=GL(2,\mathbb{R})$.
+%\end{tabular}
+%
+%Orbite di $\mathit{G}_{\alpha}$ su $\mathbb{R}^2$: $\{(0,0)\},\mathbb{R}^2\backslash \{(0,0)\}$
+%
+%\item \begin{tabular}{p{6.5 cm}p{8 cm}}
+%$\alpha = \begin{pmatrix} 0 \\ v_2 \end{pmatrix}; v_2 \neq 0$ & 
+%$\mathit{G}_{\alpha}=\left\lbrace\begin{pmatrix}
+%a & 0 \\
+%c & 1
+%\end{pmatrix} \mid a,c \in \mathbb{R}, a \neq 0\right\rbrace$
+%\end{tabular}
+%
+%Orbite di $\mathit{G}_{\alpha}$ su $\mathbb{R}^2$: $\left\lbrace \begin{pmatrix} 0 \\ u \end{pmatrix} \right\rbrace \forall u \in \mathbb{R} $, $\mathbb{R}^2 \backslash \{\mbox{asse } y\}$.
+%
+%Vediamo come mostrare che $\mathbb{R}^2 \backslash \{\mbox{asse } y\}$ è un orbita: siano $\begin{pmatrix} u_1 \\ u_2 \end{pmatrix},\begin{pmatrix} w_1 \\ w_2 \end{pmatrix}$ due vettori di tale insieme, quindi $u_1, w_1 \neq 0$. Dobbiamo determinare l'esistenza di una matrice in $\mathit{G}_{\alpha}$ che manda un vettore nell'altro. Questo equivale a risolvere il sistema lineare in $a$ e $c$:
+%\[ \begin{cases}
+%w_1=a u_1 \\
+%w_2= c u_1 + u_2
+%\end{cases}\]
+%Tale sistema è sempre determinato ed ha un unica soluzione (osserviamo che in ogni caso $a = \frac{w_1}{u_1} \neq 0$). La matrice $\begin{pmatrix} a & 0 \\ c & 1 \end{pmatrix}$ sta in $\mathit{G}_{\alpha}$ ed è la matrice cercata.
+%
+%\item \begin{tabular}{p{6.5 cm}p{8 cm}}
+%$\alpha =\begin{pmatrix} v_1 \\ 0 \end{pmatrix}; v_1 \neq0$ & $\mathit{G}_{\alpha}=\left\lbrace\begin{pmatrix}
+%1 & b \\
+%0 & d
+%\end{pmatrix} \mid b,d \in \mathbb{R}, d \neq 0\right\rbrace$
+%\end{tabular} \\
+%
+%Orbite di $\mathit{G}_{\alpha}$ su $\mathbb{R}^2$: $\left\lbrace \begin{pmatrix} u \\ 0 \end{pmatrix}\right\rbrace \forall u \in \mathbb{R}$, $\mathbb{R}^2 \backslash \{\mbox{asse } x\}$.
+%
+%\item \begin{tabular}{p{6.5 cm}p{8 cm}}
+%$\alpha =\begin{pmatrix} v_1 \\ v_2 \end{pmatrix}; v_1,v_2 \neq 0$ & $\mathit{G}_{\alpha}=\{Id\}$ 
+%\end{tabular} \\
+%
+%Orbite di $\mathit{G}_{\alpha}$ su $\mathbb{R}^2$: $\{\beta\}\mbox{ }\forall \beta \in \mathbb{R}^2$
+%\end{itemize} 
+%
+%\subsubsection*{Orbitali}
+%$\mathbb{R}^2$ non è transitivo, quindi in generale non abbiamo una corrispondeza biunivoca tra orbitali e sottorbite. Per determinatre gli orbitali utilizziamo la loro definizione, cioè come azione di $\mathit{G}$ su $\mathbb{R}^2 \times \mathbb{R}^2$ con rappresentazione $(w_1, w_2)^g=(w_1^g,w_2^g)$. Vediamo tale azione punto per punto:
+%\begin{itemize}
+%\item $(0,0) \times (0,0)$: l'orbita di questo punto è l'insieme dei punti: $(0,0,0,0)^g = ((0,0)^g,(0,0)^g)$ e cioè il singoletto $\{(0,0,0,0)\}$.
+%\item $(0,0) \times w \mbox{ con } w \in \mathbb{R}^2 \backslash \{(0,0)\}$: si ha che $((0,0),w)^g = ((0,0)^g,w^g)=((0,0),\beta)$ $\forall g \in \mathit{G}$. L'orbita è dunque $\{(0,0)\} \times \mathbb{R}^2 \backslash \{(0,0)\}$.
+%\item $w \times (0,0) \mbox{ con } w \in \mathbb{R}^2 \backslash \{(0,0)\}$: come nel punto precedente l'orbita è $\mathbb{R}^2 \backslash \{(0,0)\} \times~\{(0,0)\}$.
+%\item $(w_1,w_2) \mbox{ con } w_1,w_2 \in \mathbb{R}^2 \backslash \{(0,0)\}$: l'orbita è l'insieme dei punti $(w_1,w_2)^g=(w_1^g,w_2^g)=(\beta_1,\beta_2)$ con $\beta_1,\beta_2 \in \mathbb{R}^2 \backslash \{(0,0)\},\forall g \in \mathit{G}$. Tale insieme è $\mathbb{R}^2 \backslash \{(0,0)\} \times \mathbb{R}^2 \backslash \{(0,0)\}$.
+%\end{itemize}
+%
+
+\section{Esercizio 9(vi)}
+\begin{itemize}
+\item Descrivi esplicitamente un isomorfismo d'ordine $\mathbb{Q}\rightarrow \mathbb{Q}\backslash\{0\}$.
+\item Mostra che $\mathbb{R}$ non è isomorfo d'ordine all'insieme $\mathbb{R}\backslash\{0\}$. \newline [Questo esercizio mostra che il Teorema di Cantor non si generalizza agli insiemi non numerabili]
+\end{itemize}
+
+\subsection*{Dimostrazione:}
+
+\paragraph{} Costriuamo un isomorfismo d'ordine tra $\mathbb{Q}$ e $\mathbb{Q}\backslash\{0\}$ in maniera esplicita. Posso scegliere un enumerazione di $\mathbb{Q}$ fatta in questo modo:
+\[q_i=
+\begin{cases} 
+0 & \mbox{se } i= 0 \\ 
+\mbox{il più piccolo razionale positivo non ancora enumerato} & \mbox{se } i \mbox{ è pari} \\
+\mbox{il più grande razionale negativo non ancora enumerato} & \mbox{se } i \mbox{ è dispari}
+\end{cases}\]
+Con questa enumerazione si ha che: $ \ldots < q_5 < q_3 < q_1 < 0 < q_2 < q_4 < \ldots $.\\
+Inoltre osservo che $\{q_1,q_2,\ldots\}$ è una enumerazione di $\mathbb{Q}\backslash\{0\}$. \\
+Definisco ora la funzione $\phi$: 
+\[
+\begin{array}{cc}
+\phi: & \mathbb{Q} \rightarrow \mathbb{Q}\backslash\{0\} \\
+& 0 \mapsto q_2 \\
+& q_{2i} \mapsto q_{2(i+1)} \\
+& q_{2i+1} \mapsto q_{2i+1} \\
+\end{array} \]
+Tale funzione è iniettiva (perchè se due razionali sono uguali in $\mathbb{Q}\backslash\{0\}$ lo sono anche in $\mathbb{Q}$), suriettiva (è anche facilmente invertibile) e conserva l'ordine.
+
+\paragraph{} Mostriamo ora che non è possibile definire una funzione analoga per $\mathbb{R}$. \\ 
+Supponiamo per assurdo che invece esista un isomorfismo d'ordine $\theta: \mathbb{R} \rightarrow \mathbb{R} \backslash \{0\}$. Voglio mostrare che $\theta$ non può essere suriettivo. \\
+Osserviamo prima di tutto che gli insiemi $\mathbb{R},\mathbb{R}\backslash\{0\},\mathbb{R}^+,\mathbb{R}^-$ godono tutti delle proprietà (i)-(vi) definite a pag. 77 del Bhattacharjee. Osserviamo inoltre che la proprietà (v) è condizione necessaria, ma non sufficiente affinchè un insieme sia un intervallo.\\
+Possiamo scrivere $\mathbb{R}\backslash\{0\}=\mathbb{R}^+\cup\mathbb{R}^-$. Mostriamo che l'immagine di $\theta$ è inclusa o tutta in $\mathbb{R}^+$ oppure tutta in $\mathbb{R}^-$.
+Definisco l'insieme:
+\[A=\left\{x \in \mathbb{R} \mid \theta(x) \in \mathbb{R}^+ \right\}\]
+Se $A=\emptyset$ allora siamo a posto perchè l'immagine è tutta contenuta in $\mathbb{R}^-$. \\ Sia allora $x \in A\neq\emptyset$ e $\theta(x) \in \mathbb{R}^+$. Mostriamo che $A$ gode delle proprietà (i)-(vi):
+\begin{itemize}
+\item[-] $A\subseteq \mathbb{R}$ e quest'ultimo è un insieme totalmente ordinato, quindi anche $A$ lo è, cioè valgono le proprietà (i)-(iv).
+\item[-] Per la (v) basta mostrare che $\forall x,y \in A, \exists a \in \mathbb{R}^+$ tale  che $\theta(x)<a<\theta(y)$ per la proprietà (v) di $\mathbb{R}^+$. $\theta$ è suriettivo e conserva l'ordine, quindi $x< \theta^{-1}(a)<y$. Inoltre $\theta^{-1}(a) \in A$, quindi $A$ è un intervallo e cioè gode della prop. (v).
+\item[-]Per la (vi) si fa un ragionamento analogo: $\exists a,b \in \mathbb{R}^+$ tali che $a<\theta(x)<b$. $\theta$ è suriettivo e conserva l'ordine, cioè $\exists x,y \in \mathbb{R}$ (e quindi $x,y \in A$) tali che $\theta(y)=a$, $\theta(z)=b$ e inoltre $y<x<z$.
+\end{itemize}
+Osserviamo che $\sup(A),\inf(A)\notin A$: infatti se fossero in $A$ per la proprietà (vi) potremmo sempre trovare un valore più grande (piccolo) che appartiene ad $A$. \\
+Questo implica che $\sup(A)=+\infty $ e che $\inf(A) \in \mathbb{R}^-\cup\{-\infty\}$. Mostriamo che $\inf(A)=-\infty$.
+Supponiamo $\theta(\inf(A)) \in \mathbb{R}^-$. Sempre per la proprietà (vi) di $\mathbb{R}^-$ $\exists c \in \mathbb{R}^-$ tale che $c>\theta(\inf(A))$. Come prima $\theta$ è suriettiva e conserva l'ordine e quindi $\theta^{-1}(c)>\inf(A)$ e $\theta^{-1}(c) \notin A$, ma questo è assurdo perchè ho preso l'$\inf$. Allora $\inf(A)=-\infty$. \\
+Quindi $A$ è un intervallo illimitato superiormente e inferiormente in $\mathbb{R}$, cioè $A = \mathbb{R}$. Questo significa che tutta l'immagine di $\theta$ è contenuta in $\mathbb{R}^+$ o in $\mathbb{R}^-$ ma questo è assurdo perchè per ipotesi $\theta$ è un isomorfismo, quindi suriettivo.
+
+\end{document}
