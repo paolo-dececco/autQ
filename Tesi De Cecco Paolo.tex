@@ -1,0 +1,828 @@
+\documentclass[12pt,a4paper,openright]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{newlfont}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{csquotes}
+\usepackage[backend=biber,sorting=none]{biblatex}
+%\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+%\usepackage[color,notcite,notref]{showkeys}
+\usepackage{color}
+
+%File di riferimento della bibliografia
+\addbibresource{./bibliografia.bib}
+
+%Autore della tesi
+\author{De Cecco Paolo}
+
+%Impostazioni pagina
+\pagestyle{fancy}
+\setlength{\headheight}{15.2pt}
+\fancyhf{}
+\addtolength{\headwidth}{20pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+\lhead{\fancyplain{}{\bfseries\rightmark}}
+\rhead{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+%\fancyplain{}{\bfseries\thepage}
+%\fancyplain{}{\bfseries\leftmark}
+
+% Comandi personalizzati
+\newcommand{\aut}{ \mathrm{Aut} ( \mathbb{Q},< ) } %Automorfismi d'ordine di Q
+\newcommand{\N}{\mathbb{N}} %Insieme dei naturali
+\newcommand{\Z}{\mathbb{Z}} %Insieme degli interi
+\newcommand{\Q}{\mathbb{Q}} %Insieme dei razionali
+\newcommand{\R}{\mathbb{R}} %Insieme dei reali
+\newcommand{\0}{\setminus\{0\}} %Per insiemi in cui viene tolta l'origine 
+\newcommand{\Gsp}{$G$-spazio~} %G-spazio
+\newcommand{\stab}[1]{G_{#1}}   %Stabilizzatori (l'argomento può essere un punto o un insieme)
+
+%Colori
+\definecolor{labelkey}{rgb}{0,1,0}
+\newcommand{\comment}[1]{{\color{red}\rule[-0.5ex]{2pt}{2.5ex}}\marginpar{\small\begin{flushleft}\color{red}#1\end{flushleft}}}
+
+% Comandi per teoremi
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}[chapter]
+\newtheorem{oss}[defn]{Osservazione}
+\newtheorem{es}[defn]{Esempio}
+
+\theoremstyle{plain}
+\newtheorem{theo}[defn]{Teorema}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollario}
+\newtheorem{prop}[defn]{Proposizione}
+
+%Comandi per riferimento incrociato
+\crefname{es}{Esempio}{Esempi}
+\crefname{lem}{Lemma}{Lemmi}
+\crefname{oss}{Osservazione}{Osservazioni}
+\crefname{theo}{Teorema}{Teoremi}
+\crefname{prop}{Proposizione}{Proposizioni}
+
+\setcounter{equation}{0}
+
+
+\begin{document}
+
+\input{Intestazione.tex}
+
+\begin{titlepage}                      
+	\thispagestyle{empty} 
+	\topmargin=6.5cm                        
+	\raggedleft                             
+	\large                                
+	
+	\em                                     
+	A mio nonno Antonio.
+	
+	\newpage  
+	\clearpage{\pagestyle{empty}\cleardoublepage} %non numera l'ultima pagina sinistra
+\end{titlepage}
+
+\newpage
+\null
+\thispagestyle{empty}
+\newpage
+
+\pagenumbering{Roman}
+
+\thispagestyle{empty}
+\newpage
+\chapter*{Introduzione}
+
+\addcontentsline{toc}{chapter}{Introduzione}
+
+\rhead[\fancyplain{}{\bfseries
+	INTRODUZIONE}]{\fancyplain{}{\bfseries\thepage}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+		INTRODUZIONE}}
+
+Il mio lavoro di tesi consiste nello studio di una famiglia di funzioni definite sull'insieme dei numeri razionali: la famiglia delle biezioni che lasciano invariato l'ordine degli elementi. 
+Sfruttando il fatto che tale famiglia forma un gruppo se dotata dell'operazione di composizione, ho potuto studiare la sua azione di gruppo sull'insieme dei numeri razionali. 
+In seguito mi sono soffermato su due proprietà che caratterizzano tale azione che sono la transitività e la $k$-omogeneità.
+
+Mi sono quindi concentrato un ulteriore proprietà di cui gode l'azione degli automorfismi d'ordine e cioè la primitività. Dopo aver mostrato alcune caratteristiche di questa proprietà, come ad esempio il legame con il concetto di $G$-congruenze e con gli stabilizzatori dei punti, ho indagato la relazione che questa proprietà ha con il grafo orbitale della famiglia degli automorfismi dei razionali. Nello specifico il teorema di Higman mostra come la primitività sia legata alla proprietà di connessione del grafo orbitale, vedremo in particolare che le due proprietà si implicano a vicenda. Da questo legame poi ne sono state tratte le dovute conseguenze sulla famiglia degli automorfismi dei razionali.
+
+Nell'ultimo capitolo della tesi mi sono soffermato su un importante risultato riguardante gli automorfismi d'ordine e più in generale gli isomorfismi d'ordine di insiemi numerabili con determinate proprietà; tale risultato prende il nome di Teorema di Cantor.
+Per la dimostrazione del teorema sono state fornite due differenti argomentazioni, ognuna delle quali con peculiarità diverse: la prima, intuitivamente più immediata, fornisce una costruzione induttiva dell'isomorfismo d'ordine della tesi del teorema, mentre la seconda sfrutta meglio le simmetrie degli insiemi che si prendono in considerazione.
+Ho quindi fornito quindi un esempio esplicito di isomorfismo d'ordine tra due insiemi numerabili che soddisfano le ipotesi del teorema e ho mostrato con un controesempio il fatto che il teorema non è generalizzabile agli insiemi non numerabili.
+
+La tesi si conclude dimostrando che il gruppo degli automorfismi d'ordine dei razionali ha la cardinalità del continuo. In tale dimostrazione ho utilizzato il fatto che tale gruppo agisce in modo transitivo sull'insieme delle $\Z$-sequenze, che sono particolari funzioni da $\Z$ in $\Q$.
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+
+\pagenumbering{arabic}
+
+\chapter{Automorfismi d'ordine di $\Q$}
+
+In questo primo capitolo il nostro scopo è quello di introdurre la famiglia degli automorfismi d'ordine dei numeri razionali a partire dagli insiemi totalmente ordinati e dalla nozione di morfismo d'ordine tra tali insiemi. Vedremo in seguito che tale famiglia di funzioni, dotata dell'operazione di composizione, forma un gruppo. Gli automorfismi d'ordine di $\Q$ sono quindi in particolare delle permutazioni dei numeri razionali.
+
+\section{Isomorfismi d'ordine}
+
+\begin{defn}[Insieme totalmente ordinato]
+Un \emph{insieme totalmente ordinato} è una coppia $(A,<)$ dove $A$ è un insieme non vuoto e $<$ è una relazione binaria, detta \emph{relazione d'ordine di $A$}, che soddisfa le proprietà:
+\begin{enumerate}
+\item per ogni $x \in A$, si ha $x \nless x$ (Irriflessività);
+\item per ogni $x,y \in A$, si ha che $x<y \mbox{ implica } y \nless x$ (Antisimmetria);
+\item per ogni $x,y,z \in A$, se $x<y \mbox{ e } y<z$, allora $x<z$ (Transitività);
+\item per ogni $x,y \in A$, vale solo una delle proposizioni: (Linearità)\[x<y,\medspace x=y,\medspace y<x\]
+\end{enumerate}
+\end{defn}
+
+\begin{oss}
+La coppia $(\Q,<)$, dove $\Q$ è l'insieme dei numeri razionali e $<$ è l'ordine naturale su $\Q$, è un insieme totalmente ordinato.
+\end{oss}
+
+In realtà è possibile definire due ulteriori proprietà di cui gode l'insieme $(\Q,<)$: tali proprietà sono l'essere \emph{denso} e \emph{senza estremi}.
+
+\begin{defn}[Insieme denso]
+Un insieme totalmente ordinato è \emph{denso} se per ogni $x,y \in A$ con $x<y,$ esiste $z \in A \mbox{ tale che } x<z<y$.
+\end{defn}
+\begin{defn}[Insieme senza estremi]
+Un insieme totalmente ordinato è \emph{senza estremi} se per ogni $x \in A$ esistono $y,z \in A \mbox{ tali che } y<x<z$.
+\end{defn}
+
+Si considerino ora due insiemi totalmente ordinati $(A,<_A)$ e $(B,<_B)$, non necessariamente densi o senza estremi. Supponiamo esista una funzione $f: A \rightarrow B$.
+In generale se due elementi sono confrontabili in $A$ non è detto che lo siano anche le loro immagini in $B$ tramite $f$, ossia $x<_A y$ non implica $f(x)<_B f(y)$.
+\begin{defn} Siano $\left(A,<_A\right)$ e $\left(B,<_B\right)$ due insiemi totalmente ordinati. Diciamo che $f:A \rightarrow B$ \emph{conserva l'ordine} se per ogni $x,y \in A$, $x<_A y$ implica $f(x)<_B f(y)$.
+\end{defn}
+È facile intuire che le biezioni che conservano l'ordine hanno una certa importanza nella trattazione degli insiemi totalmente ordinati e, poiché $(\Q,<\nolinebreak)$ è proprio uno di questi insiemi, useremo frequentemente funzioni con questa proprietà, come ad esempio nel \cref{theo:cantor}. Diamo ora la definizione di una particolare famiglia di queste funzioni: gli isomorfismi d'ordine.
+
+\begin{defn}[Isomorfismo d'ordine]
+Siano $(A,<_A) \mbox{ e } (B,<_B)$ due insiemi totalmente ordinati. Un \emph{isomorfismo d'ordine} è una mappa $\varphi: A \rightarrow B$ biettiva e tale che $x<_Ay$ se e solo se $\varphi(x)<_B\varphi(y)$ per ogni $x,y \in A$.
+\end{defn}
+D'ora in poi per un insieme totalmente ordinato la relazione d'ordine definita sull'insieme sarà sottintesa. È chiaro dal contesto l'insieme su cui è definita ciascuna relazione d'ordine.
+\begin{prop}
+    Siano $A$ e $B$ due insiemi totalmente ordinati. Se $f:A \rightarrow B$ è una funzione biettiva e conserva l'ordine allora $f$ è un isomorfismo d'ordine.
+\end{prop}
+\begin{proof}
+    È sufficiente mostrare che per ogni $x,y \in A$, $f(x)<f(y)$ implica $x<y$. Supponiamo dunque $f(x)<f(y)$. Se per assurdo $x>y$, allora si dovrebbe avere $f(x)>f(y)$ poiché $f$ conserva l'ordine. Questo è in contraddizione con la linearità dell'ordine di $B$. La stessa contraddizione si ha per $x=y$, perciò dev'essere $x<y$.
+\end{proof}
+
+Definiamo ora la famiglia degli automorfismi d'ordine di $\Q$, che indichiamo con la notazione $\aut$.
+\begin{defn}
+La famiglia degli automorfismi d'ordine dell'insieme dei numeri nazionali è l'insieme
+\[ \aut = \left\lbrace \varphi \mid \varphi: \Q \rightarrow \Q, \varphi \mbox{ isomorfismo d'ordine} \right\rbrace \]
+\end{defn}
+\begin{oss}\label{oss:aut_gruppo}
+L'insieme $\aut$ dotato dell'operazione di composizione è un gruppo. Infatti:
+\begin{itemize}
+\item per ogni $f,g \in \aut , f \circ g$ è biettiva in quanto composizione di funzioni biettive e inoltre per ogni $x,y \in \Q$, $f(g(x))<f(g(y)) \Leftrightarrow g(x)<g(y) \Leftrightarrow x<y$, quindi $f \circ g$ conserva l'ordine e dunque è un isomorfismo d'ordine, perciò  $f \circ g \in \aut$. 
+\item la funzione identità appartiene ad $\aut$ ed è l'elemento neutro del gruppo.
+\item se $f \in \aut$ allora $f^{-1}$ è biettiva e conserva l'ordine, infatti $f^{-1}(x)<f^{-1}(y) \Leftrightarrow f(f^{-1}(x))<f(f^{-1}(y)) \Leftrightarrow x<y$, quindi $f^{-1} \in \aut$.
+\end{itemize}
+\end{oss}
+
+Nella prossima sezione introdurremo la nozione di azione di gruppo e di \Gsp e vedremo alcune loro nozioni fondamentali.
+
+\section{Azione di gruppi}
+
+Nell'\cref{oss:aut_gruppo} si è mostrato che $\aut$ è un insieme che ha struttura di gruppo. In generale un gruppo può essere visto, in modi differenti, come un gruppo di permutazioni. Nel nostro caso $\aut$ è il gruppo contenente tutte le possibili permutazioni dei numeri razionali che lasciano invariato il loro ordine. Per comprendere dunque la struttura di questo gruppo risulta cruciale studiarne l'azione sull'insieme dei numeri razionali.
+
+\begin{defn}[Azione di gruppi]
+Siano $G$ un gruppo e $\Omega$ un insieme. Un azione di $G$ su $\Omega$ è una mappa:
+\[\begin{tabular}{ccc}
+$\Omega \times G$ & $\rightarrow$ & $\Omega$ \\ 
+$(\omega,g)$ & $\mapsto$ & $\omega^g$
+\end{tabular}\]
+tale che:
+\begin{enumerate}
+\item per ogni $g,h \in G$ e $\omega \in \Omega$ si ha $(\omega^g)^h=\omega^{gh}$.
+\item per ogni $\omega \in \Omega$ si ha $\omega^1=\omega$ dove $1$ è l'elemento neutro del gruppo $G$.
+\end{enumerate}
+Se $G$ agisce su $\Omega$, allora $\Omega$ è detto \Gsp.
+\end{defn}
+\begin{oss}
+    Se $G$ è un gruppo e $H$ un suo sottogruppo, se $G$ agisce su $\Omega$ allora anche $H$ agisce su $\Omega$. Questo fatto è utilizzato più avanti, nell'\cref{es:cayleygen}.
+\end{oss}
+Si riporta ora, a titolo di esempio, una famosa azione di gruppi.
+\begin{es}[Rappresentazione di Cayley] 
+Sia $G$ un gruppo e sia $\Omega = G$. Si definisce un'azione di $G$ su se stesso attraverso la moltiplicazione destra ponendo $\omega^g =\omega g$, dove $\omega \in \Omega$ e $g \in G$. \newline Si verifica che questa è un azione di gruppo: infatti per ogni $\omega \in \Omega$ e $g,h \in G$ si ha $wg \in \Omega$ (in quanto $\Omega=G$) e quindi $(\omega^g)^h=\omega^{gh}=\omega gh \in \Omega$. Inoltre $\omega^1=\omega 1=\omega$.
+Tale azione di gruppo è detta \emph{rappresentazione di Cayley}.
+\end{es}
+\begin{defn}[Orbita di un elemento]
+Sia $\Omega$ un \Gsp. L'\emph{orbita} di un elemento $\omega \in \Omega$ è l'insieme
+\[\omega^G = \left\lbrace \omega^g \mid g \in G \right\rbrace \]
+\end{defn}
+
+\begin{oss} In ogni \Gsp $\Omega$ si può definire una nuova relazione binaria ``$\sim$'' per la quale due elementi sono in relazione se e solo se appartengono alla stessa orbita, ovvero:
+\begin{equation}
+\label{eq:orbits} \alpha \sim \beta \mbox{ se e solo se esiste } g \in G \mbox{ tale che } \alpha^g=\beta 
+\end{equation}
+Il seguente teorema mostra che tale relazione è di equivalenza. Le classi di equivalenza sono dette orbite di $G$ su $\Omega$.
+\end{oss}
+
+\begin{theo}
+Ogni \Gsp $\Omega$ si esprime in modo unico come unione disgiunta di orbite. \\
+Equivalentemente la relazione binaria~\eqref{eq:orbits} è una relazione di equivalenza.
+\end{theo}
+\begin{proof}
+In primo luogo si mostra che per ogni $\alpha,\beta \in \Omega$, $\alpha^G \cap \beta^G \neq \emptyset$ implica $\alpha^G=\beta^G$. Supponiamo $\gamma \in \alpha^G \cap  \beta^G$. Allora $\gamma = \alpha^{g_1}=\beta^{g_2}$ per qualche $g_1,g_2 \in G$. In tal caso $\alpha=\beta^{g_2g_1^{-1}}$, cioè $\alpha \in \beta^G$ e quindi $\alpha^G \subseteq \beta^G$. Analogamente è valida l'inclusione inversa. Allora $\alpha^G=\beta^G$. \\
+D'altra parte si può osservare che le orbite degli elementi di $\Omega$ formano una partizione dello spazio e dunque la relazione definita sopra è di equivalenza. La proprietà riflessiva assicura che ogni elemento appartenga almeno ad un'orbita.
+\end{proof}
+
+Si noti che, grazie a questo teorema, a partire da un gruppo $G$ è possibile costruire da zero un nuovo \Gsp aggiungendo, volta per volta, un elemento $\alpha$ e la sua relativa orbita. Si osservi inoltre che se l'elemento appartiene già ad un'altra orbita, allora le due orbite coincidono.
+
+\medskip Nella prossima sezione introdurremo un caso particolare di $G$-spazi, gli spazi transitivi.
+
+\section{Spazi transitivi}
+\begin{defn}[Spazio transitivo]
+Sia $\Omega$ un \Gsp. Diciamo che $G$ \textit{agisce transitivamente} su $\Omega$ o equivalentemente che $\Omega$ è un \emph{\Gsp transitivo} se $\alpha^G=\Omega$ per ogni $\alpha \in \Omega$.
+\end{defn}
+Chiaramente un \Gsp é transitivo se tutti gli elementi appartengono ad una unica orbita. Vediamo ora un paio di esempi sugli spazi transitivi che saranno utili in seguito.
+\begin{es} \label{es:cayleygen}
+Sia $G$ un gruppo che agisce su se stesso tramite la rappresentazione di Cayley. Tale azione è chiaramente transitiva poiché per ogni $\alpha \in G$ e per ogni $ g \in G$ si ha $ \alpha^g=\nobreak\alpha g \in\nobreak G$.
+
+\smallskip Più in generale, dato un sottogruppo $H$ di $G$, consideriamo l'insieme $\Omega$ delle classi laterali destre di $H$. Si consideri l'azione data da $\left(H\alpha\right)^\beta=H\alpha\beta$. Allora $\Omega$ è un \Gsp transitivo in quanto per ogni $H\alpha, H\beta \in \Omega$ si ha $H\beta=(H\alpha)^{\alpha^{-1}\beta}$ con $\alpha^{-1}\beta \in G$. Si osservi che la rappresentazione di Cayley è un caso particolare di questo tipo di azioni in cui $H=\{1\}.$
+\end{es}
+\begin{es}\label{es:azionegl}
+Sia $\Omega=\R^2$ e $G=\mathrm{GL}(2,\R)$. L'azione di $\mathrm{GL}(2,\R)$ su $\R^2$ non è transitiva, infatti l'immagine dell'origine in $\R^2$ non può essere un elemento non nullo di $\R^2$. \\
+D'altra parte, tutti gli altri elementi di $\R^2$ giacciono in una unica orbita: basta osservare innanzitutto che le matrici associate ad una rotazione di centro l'origine e angolo $\theta \in [0,2\pi]$ e le omotetie di parametro $\lambda \neq 0$ appartengono a $\mathrm{GL}(2,\R)$. Inoltre per ogni $(x,y),(u,v) \in \R^2$ non nulli, è sempre possibile trovare una matrice $H \in \mathrm{GL}(2,\R)$ che sia ottenuta componendo una rotazione con una omotetia e tale che $(x,y)^H=(u,v)$.
+Dunque su $\R^2$ visto come $\mathrm{GL}(2,\R)$-spazio esistono esattamente due orbite:$\{(0,0)\}$ e $\R^2 \backslash \{(0,0)\}$.
+\end{es}
+\begin{defn}[G-morfismo]
+Siano $\Omega$ e $\Omega'$ due $G$-spazi. Una mappa $\varphi : \Omega \rightarrow \Omega'$ è un $G$-morfismo se per ogni $\omega \in \Omega$ e $g \in G$:
+\[\varphi (\omega^g)=(\varphi (\omega))^g\]
+Se la mappa $\varphi$ è biettiva allora è detta $G$-isomorfismo.
+\end{defn}
+\begin{defn}[Stabilizzatore di un punto]\label{defn:stab}
+Sia $\Omega$ un \Gsp. Per ogni $\alpha \in \Omega$ si definisce \emph{stabilizzatore di $\alpha$} in $G$ l'insieme
+\[G_{\alpha}= \left\lbrace g \in G \mid \alpha^g=\alpha \right\rbrace \] 
+\end{defn}
+
+\begin{oss}
+$\stab{\alpha}$ è un sottogruppo di $G$.
+\end{oss}
+
+\begin{lem} \label{lem:lemma34}
+Se $g,h \in G$ si ha \[\stab{\alpha}g=\stab{\alpha}h \mbox{ se e solo se } \alpha^g=\alpha^h\]
+\end{lem}
+\begin{proof}
+$\stab{\alpha}g=\stab{\alpha}h$ se e solo se $gh^{-1} \in \stab{\alpha}$ se e solo se $\alpha^{gh^{-1}}=\alpha$ se e solo se $\alpha^g=\alpha^h$
+\end{proof}
+\begin{theo}
+Sia $\Omega$ un \Gsp transitivo. Allora $\Omega$ è $G$-isomorfo al \Gsp delle classi laterali destre di $\stab{\alpha}$ per ogni $\alpha \in \Omega$.
+\end{theo}
+\begin{proof}
+Si è già osservato nell'\cref{es:cayleygen} che l'insieme delle classi laterali destre di un sottogruppo di $G$ è sempre un \Gsp transitivo.
+
+Si definisca una funzione $\theta : \Omega \rightarrow \{\stab{\alpha}a \mid a \in G\}$ tale che $\theta (\omega)=\stab{\alpha}g$ dove $g \in G$ in modo tale che $\omega=\alpha^g$. Si osservi che $g$ esiste in quanto $\Omega$ è transitivo, inoltre $\theta$ è ben definita per il \cref{lem:lemma34}. Sempre per tale lemma si ha che $\theta$ è iniettiva: infatti se $\omega_1=\alpha^g$ e $\omega_2=\alpha^h$, allora $\stab{\alpha}g=\stab{\alpha}h \mbox{ solo se } \alpha^g=\alpha^h \mbox{ solo se } \omega_1=\omega_2$. Per definizione $\theta$ è anche suriettiva (dato $g$, allora $\alpha^g=\omega$). Quindi $\theta$ è una biezione.
+
+Rimane da mostrare che $\theta$ è un $G$-morfismo. Per ogni $\omega \in \Omega$ sia $h \in G$ tale che $\alpha^h=\omega$. Allora per ogni $g \in G$ si ha \[\theta(\omega^g)=\theta(\alpha^{hg})=\stab{\alpha}hg=(\theta(\omega))^g\]
+\end{proof}
+
+Per un \Gsp di almeno $k$ elementi, la nozione di transitività può essere estesa
+considerando, al posto dei singoli elementi del \Gsp, i sottoinsiemi di cardinalità fissata $k$. In questo modo si ottengono ulteriori proprietà del $G$-spazio.
+
+\begin{defn}[Spazio $k$-transitivo]
+Sia $k \in \mathbb{N}$. Un \Gsp è \emph{$k$-transitivo} (o l'azione di $G$ su $\Omega$ è $k$-transitiva) se per due insiemi qualsiasi di $k$ elementi distinti di $\Omega$ $\{\alpha_1,\alpha_2,\ldots,\alpha_k\}$, $\{\beta_1,\beta_2,\ldots,\beta_k\}$ esiste $g \in G$ tale che $\alpha_i^g=\beta_i$ per $i=1,\ldots,k$.
+\end{defn}
+\begin{oss}
+Un \Gsp 1-transitivo è semplicemente uno spazio transitivo. \\
+Un \Gsp $k$-transitivo è $(k-1)$-transitivo poiché per due insiemi qualsiasi di $k-1$ elementi distinti di $\Omega$ si aggiunge a ciascuno dei due insiemi un elemento di $\Omega$ distinto dagli altri e si conclude con la $k$-transitività.
+\end{oss}
+Il seguente controesempio mostra che uno spazio transitivo non necessariamente è uno spazio 2-transitivo.
+\begin{es}[Azione di $\mathrm{GL}(2,\R)$ su $\R^2\backslash \{(0,0)\}$ ]
+Nell'\cref{es:azionegl} si è visto che l'azione di $\mathrm{GL}(2,\R)$ su $\R^2\backslash \{(0,0)\}$ è transitiva.\\
+Tuttavia questa azione non è 2-transitiva in quanto non esiste una matrice $H$ in $\mathrm{GL}(2,\R)$ tale che $(x,0)^H=(x,0)$ e  $(y,0)^H=(0,y)$ per $y \neq x$.
+\end{es}
+
+Infine introduciamo un indebolimento delle nozioni di transitività e $k$-transitività.
+
+\begin{defn}[Spazio $k$-omogeneo]
+Sia $k \in \mathbb{N}$. Un \Gsp $\Omega$ è \emph{$k$-omogeneo} se per qualsiasi $\Gamma,\Delta \subseteq \Omega$ con $|\Gamma|=|\Delta|=k$ si ha $\Gamma^g=\Delta$ per qualche $g \in G$.
+\end{defn}
+
+\begin{oss} \label{os:auttrans}
+Un \Gsp 1-omogeneo è transitivo. Come per la transitività, un \Gsp $k$-omogeneo è $(k-1)$-omogeneo.
+\end{oss}
+
+\begin{oss}
+La $k$-transitività di un \Gsp è una proprietà più forte rispetto alla $k$-omogeneità: infatti entrambe le definizioni vengono date per insiemi di cardinalità $k$, ma nella $k$-transitività la scelta di $g \in G$ dipende anche dall'ordine degli elementi nei due insiemi, cosa che non è richiesta nella $k$-omogeneità. \newline 
+Ciò significa che la nozione di $k$-transitività di un \Gsp può essere vista come la proprietà per cui date due qualsiasi $n$-uple ordinate di elementi di $\Omega$ esiste $g \in G$ che manda una $n$-upla nell'altra.
+\end{oss}
+
+\section{Prime proprietà di $\aut$}
+
+\begin{theo}\label{theo:k-omog}
+L'azione di $\aut$ su $\Q$ è $k$-omogenea per ogni $k \in \mathbb{N}$.
+\end{theo}
+\begin{proof}
+Siano $\Gamma,\Delta$ due sottoinsiemi finiti di $\Q$ di cardinalità $k$. Costruiamo esplicitamente un automorfismo d'ordine $\varphi$ di $\Q$ tale che $\varphi(\Gamma)=\Delta$. \\
+Numeriamo gli elementi di $\Gamma$ e $\Delta$ in base al loro ordine naturale, siano quindi:
+\[\Gamma=\{x_1,\ldots,x_n\} \mbox{ con } x_1<x_2<\ldots<x_n,\] 
+\[\Delta=\{y_1,\ldots,y_n\} \mbox{ con } y_1<y_2<\ldots<y_n.\]
+Siano ora $A_0,\ldots,A_n$ i seguenti intervalli: $A_0=(-\infty,x_1)$, $A_n=(x_n,+\infty)$ e $A_i=(x_i,x_{i+1})$ per $i=1,\ldots,n-1$; analogamente siano $B_0,\ldots,B_n$ gli intervalli $B_0=(-\infty,y_1)$, $B_n=(y_n,+\infty)$ e $B_i=(y_i,y_{i+1})$ per $i=1,\ldots,n-1$. \\
+Definiamo delle mappe $f_i:A_i \rightarrow B_i$ per $i=0,1,\ldots,n$ tali che:
+\[f_0:x \mapsto (x-x_1)+y_1\]
+\[f_i:x \mapsto \frac{y_{i+1}-y_1}{x_{i+1}-x_i} (x-x_i)+y_i\]
+\[f_n:x \mapsto (x-x_n)+y_n\]
+
+Sia allora $\varphi:\Q \rightarrow \Q$ tale che:
+\[\varphi(x_i)=y_i \mbox{ per } i=0,\ldots,k\]
+\[\varphi|_{A_i}(x)=f_i \mbox{ per } i=0,\ldots,k\]
+Tale $\varphi$ è un automorfismo d'ordine e $\varphi(\Gamma)=\Delta$.
+\end{proof}
+\begin{cor}
+L'azione di $\aut$ su $\Q$ è transitiva.
+\end{cor}
+\begin{proof}
+    È un immediata conseguenza dell'\cref{os:auttrans}.
+\end{proof}
+\begin{prop}
+L'azione di $\aut$ su $\Q$ non è 2-transitiva.
+\end{prop}
+\begin{proof}
+Se l'azione fosse 2-transitiva, dati due numeri razionali distinti $\{p,q\}$ con $p<q$, dovrebbe esistere un automorfismo $\varphi$ di $\Q$ tale che $\varphi(p)=q$ e allo stesso tempo $\varphi(q)=p$. Questo automorfismo non conserva l'ordine in quanto $q=\varphi(p)\nless \varphi(q)=p$.
+\end{proof}
+
+%%%%%%%%% SECONDO CAPITOLO %%%%%%%%%
+\chapter{Primitività e grafo orbitale di $\aut$}
+
+Nel primo capitolo il nostro intento è stato quello di introdurre l'azione di gruppi come strumento utile allo studio del gruppo $\aut$ e inoltre abbiamo mostrato alcune proprietà dell'azione di tale gruppo.
+
+In questo capitolo vedremo un'ulteriore proprietà di quest'azione che è la primitività. Si è scelto di discutere di questa proprietà distinguendola dalle precedenti per la sua importanza. Vedremo inoltre il Teorema di Higman che mostra il legame di tale proprietà con la connessione del grafo orbitale. Discuteremo infine le proprietà di connessione del grafo orbitale di $\aut$ a partire dai risultati ottenuti.
+
+\section{Primitività dell'azione}
+Diamo la definizione di primitività partendo dalla nozione di \emph{blocco} di un \Gsp.
+
+\begin{defn}[Blocco di un \Gsp transitivo]
+Sia $\Omega$ un \Gsp transitivo e sia $\Delta \subseteq \Omega$ con $\Delta \neq \emptyset$. Allora $\Delta$ è un \emph{blocco} se per ogni $g \in G$, $\Delta \cap \Delta^g = \emptyset$ implica $\Delta=\Delta^g$.
+\end{defn}
+\begin{oss} 
+In un \Gsp transitivo lo spazio stesso e i singoletti sono sempre dei blocchi. I blocchi di questo tipo sono detti \emph{banali}.
+\end{oss}
+\begin{defn} [Spazio primitivo]
+Sia $\Omega$ un \Gsp transitivo. Allora $\Omega$ è un \Gsp \emph{primitivo} se ogni blocco di $\Omega$ è banale.
+\end{defn}
+\begin{defn} [$G$-congruenze]
+    Sia $\Omega$ un \Gsp transitivo e sia $\approx$ una relazione di equivalenza su $\Omega$. Se vale $\alpha \approx \beta \Leftrightarrow \alpha^g \approx \beta^g$ per ogni $\alpha, \beta \in \Omega$ e per ogni $g \in G$ allora $\approx$ è detta una \emph{$G$-congruenza} su $\Omega$.
+\end{defn}
+In una $G$-congruenza $\approx$ le classi di equivalenza sono dette $\approx$-classi.
+\begin{oss} 
+    Una $G$-congruenza è detta \emph{non banale} se esiste una $\approx$-classe con più di un elemento, è detta \emph{propria} se esistono almeno due $\approx$-classi. 
+\end{oss}
+\begin{es}
+    La relazione $\alpha \approx \beta \Leftrightarrow \alpha=\beta$ è sempre una $G$-congruenza. Tale congruenza è detta \emph{congruenza banale}. Le $\approx$-classi della congruenza sono gli insiemi singoletti.
+\end{es}
+\begin{es}
+    Anche la relazione $\alpha \approx \beta$ per ogni $\alpha,\beta \in \Omega$ è sempre una $G$-congruenza ed è conosciuta come \emph{congruenza universale}. In questa congruenza esiste un'unica $\approx$-classe costituita da tutto l'insieme $\Omega$.
+\end{es}
+Si può notare che ci sono delle analogie tra i blocchi di un \Gsp e le $\approx$-classi di una $G$-congruenza, si prenda come esempio di ciò il fatto che in un \Gsp transitivo i singoletti e $\Omega$ stesso sono sempre dei blocchi o delle $\approx$-classi. Per questa ragione è possibile dare una diversa definizione di spazio primitivo a partire dalle $G$-congruenze anziché dai blocchi. Il seguente teorema mostra che entrambe le definizioni sono equivalenti.
+\begin{theo}
+    Sia $\Omega$ un \Gsp con $|\Omega|>1$. Allora sono equivalenti:
+    \begin{enumerate}[(i)]
+        \item $\Omega$ è primitivo.
+        \item Per ogni $\alpha \in \Omega$, $\stab{\alpha}$ è un sottogruppo massimale di $G$.
+        \item In $\Omega$ non esistono $G$-congruenze proprie e non banali.
+    \end{enumerate}
+\end{theo}
+\begin{proof} 
+    $ $
+\begin{itemize}
+    \item[]\textbf{(i) $\Rightarrow$ (ii)} Sia $\stab{\alpha}\leq H \leq G$ e sia $\Delta=\alpha^H$ l'orbita di $\alpha$ per $H$. Mostriamo che $\Delta$ è un blocco. Supponiamo $\beta \in \Delta \cap \Delta^g$ per qualche $g \in G$. Allora $\beta \in \alpha^{H}$ e $\beta \in \alpha^{Hg}$, quindi esistono $h,h' \in H$ tali che $\beta=\alpha^h=\alpha^{h'g}$.
+    Perciò $\alpha=\alpha^{h'gh^{-1}}$ e quindi $h'gh^{-1} \in \stab{\alpha} \leq H$, ma questo implica $g \in H$ e dunque $\Delta^g=\Delta$. Quindi $\Delta$ è un blocco. \\
+    Per ipotesi $\Delta=\{\alpha\}$ oppure $\Delta=\Omega$. Nel primo caso si ha $H=\stab{\alpha}$ perché gli elementi di $H$ devono stabilizzare $\alpha$ e inoltre $\stab{\alpha} \leq H$. Nel secondo caso $\alpha^H=\Omega$, dunque $H$ è transitivo su $\Omega$. In tal caso per ogni $\beta \in \Omega$ esiste $h_{\beta} \in H$ tale che $\alpha^{h_{\beta}}=\beta$. Allora
+    \[G= \bigcup_{\beta \in \Omega}\stab{\alpha}h_{\beta} \leq H,\]
+    quindi $G=H$.
+    \item[]\textbf{(ii) $\Rightarrow$ (iii)} Sia $\approx$ una $G$-congruenza e mostriamo che $\approx$ o è banale o è universale.
+    Sia $\Delta$ la $\approx$-classe contenente $\alpha$ e definiamo l'insieme
+    \[H=\left\{g \in G \mid \Delta^g=\Delta \right\}.\] 
+    Si osservi che $\stab{\alpha}\leq H$, questo perché se $g \in \stab{\alpha}$ e $\delta \in \Delta$ allora $\alpha \approx \delta$ e ciò implica $\alpha=\alpha^g \approx \delta^g$. Per ipotesi $\stab{\alpha}$ è un sottogruppo massimale di $G$, per cui si ha $\stab{\alpha}=H$ oppure $H=G$. Nel primo caso $\Delta=\{\alpha\}$ e la $G$-congruenza $\approx$ è banale, nel secondo caso $\Delta=\Omega$ e la $G$-congruenza è universale.
+    \item[]\textbf{(iii) $\Rightarrow$ (i)} Sia $\Delta$ un blocco di $\Omega$, mostriamo che $\Delta$ è banale. Per ogni $\alpha, \beta \in \Omega$ definiamo
+     \[\alpha \approx \beta \Leftrightarrow \mbox{ per ogni } g \in G \mbox{ si ha } \alpha \in \Delta^g \mbox{ se e solo se } \beta \in \Delta^g.\] 
+     Si può osservare che $\approx$ è una relazione di equivalenza. Mostriamo che è una $G$-congruenza, sia $\alpha \approx \beta$ e sia $g \in G$. Supponiamo $\alpha^g \in \Delta^h$ per qualche $h \in G$. Allora $\alpha \in \Delta^{hg^{-1}}$. Per definizione di $\approx$ si ha $\beta \in \Delta^{hg^{-1}}$, ovvero $\beta^g \in \Delta^h$, dunque $\alpha^g \approx \beta^g$. \\
+    Per ipotesi $\approx$ è una $G$-congruenza banale oppure universale. Nel primo caso si ha necessariamente $\Delta=\{\alpha\}$ mentre nel secondo caso $\Delta=\Omega$.
+\end{itemize}
+\end{proof}
+Torniamo a considerare l'azione di $\aut$ su $\Q$ e mostriamo che tale azione è primitiva. 
+\begin{prop}\label{prop:prim2omo}
+Un \Gsp 2-omogeneo è primitivo.
+\end{prop}
+\begin{proof}
+Sia $\Delta$ un blocco di $\Omega$. Se $|\Delta|=1$ allora è un blocco banale.
+
+\noindent Siano ora $\alpha,\beta \in \Omega$ tali che $\{\alpha,\beta \} \subseteq \Delta$. Poiché $\Omega$ è 2-omogeneo, allora per ogni $\gamma \in \Omega$ esiste $g \in G$ tale che $\{ \alpha, \beta \}^g =\{\alpha,\gamma\}$. Dunque $\{\alpha,\gamma \} \subseteq \Delta^g$. Siccome $\alpha \in \Delta \cap \Delta^g$, allora $\Delta = \Delta^g$ e quindi $\gamma \in \Delta$. Poiché la scelta di $\gamma$ è arbitraria, si ha $\Delta=\Omega$.
+\end{proof}
+Si è già mostrato nel \cref{theo:k-omog} che ${\aut}$ è 2-omogeneo, dunque il seguente corollario è un'immediata conseguenza della \cref{prop:prim2omo}.
+\begin{cor}
+L'azione di $\aut$ su $\Q$ è primitiva.
+\end{cor}
+
+\section{Grafo orbitale}
+Come già osservato nell'introduzione a questo capitolo la primitività dell'azione è in qualche modo legata alla proprietà di connessione del grafo orbitale di $\aut$.
+
+Per mostrare quanto detto introdurremo in un primo momento tutti gli strumenti utili a definire il concetto \emph{grafo orbitale} di un gruppo e il significato di \emph{grafo connesso}. In seguito descriveremo la conformazione del grafo orbitale di $\aut$ riconducendoci alle definizioni date.
+
+\begin{defn}(Orbitale di $G$)
+Sia $\Omega$ un \Gsp transitivo. Definiamo un'azione di $G$ su $\Omega^2$ nel modo seguente: $(\omega_1,\omega_2)^g=(\omega_1^g,\omega_2^g)$. Le orbite di tale azione sono dette \emph{orbitali} di $G$.
+\end{defn}
+\begin{oss}
+L'insieme $\Delta_0=\left\{(\omega,\omega) \mid \omega \in \Omega \right\} \subseteq \Omega^2$ è sempre un orbitale ed è detto \emph{orbitale diagonale} di $G$.
+\end{oss}
+\begin{es} \label{es:orbitaleq}
+Siano $G=\aut$ e $\Omega=\Q$. Gli orbitali di $G$ sono gli insiemi $\{(q,q)\mid q \in \Q\}, \left\{(q_1,q_2)\mid q_1<q_2\right\},\left\{(q_1,q_2)\mid q_1>q_2\right\}$. 
+Il primo è l'orbitale diagonale, il secondo è l'orbita in  $\Omega^2$ degli elementi del tipo $(\omega_1,\omega_2)$ con $\omega_1<\omega_2$ e l'ultimo è l'orbita in $\Omega^2$ degli elementi del tipo $(\omega_1,\omega_2)$ con $\omega_1>\omega_2$.
+\end{es}
+\begin{defn}(Grafo)
+Un \emph{grafo} $\Gamma$ è una coppia $(V,E)$, dove $V$ è un insieme non vuoto ed $E$ è un insieme di coppie $\{\alpha,\beta \}$ con $\alpha,\beta \in V$. Gli elementi di $V$ sono chiamati \emph{vertici} mentre gli elementi di $E$ sono chiamati \emph{lati}.
+\end{defn}
+
+\begin{defn}[Grafo orientato] Nelle notazioni precedenti, un grafo è \emph{orientato} se le coppie in $E$ sono ordinate e in tal caso si dicono \emph{lati orientati}.
+Nel caso in cui $\Gamma$ sia un grafo orientato allora $\{\alpha,\beta\}$ è un lato del grafo se e solo se almeno uno tra $\left(\alpha,\beta\right)$ e $\left(\beta,\alpha\right)$ è un lato orientato.
+\end{defn}
+\begin{defn}[Grafo orbitale]
+Sia $G$ un gruppo che agisce su $\Omega$ e sia $\Delta$ un orbitale di $G$. Si definisce \emph{grafo orbitale} di $G$ rispetto all'orbitale $\Delta$ il grafo orientato che ha $\Omega$ come insieme di vertici e $\Delta$ come insieme di lati orientati.
+\end{defn}
+\begin{defn}[Cammino di un grafo]
+    Un \emph{cammino} da $\alpha$ a $\beta$ in un grafo $\Gamma$ è una sequenza di vertici
+    \[\alpha=\alpha_0,\alpha_1,\ldots,\alpha_n=\beta\]
+    tale che $\{\alpha_i,\alpha_{i+1}\}$ sia un lato per ogni $i=0,\ldots,n-1$. 
+\end{defn}
+\begin{defn}[Grafo connesso]
+    Un grafo $\Gamma$ è \emph{connesso} se per ogni coppia di vertici $\alpha,\beta$ esiste un cammino da $\alpha$ a $\beta$. 
+\end{defn}
+\begin{oss}\label{oss:comp_connesse}
+    Si definisca la relazione 
+    \[\alpha \approx \beta \mbox{ se e solo se } \alpha=\beta \mbox{ oppure esiste un cammino da } \alpha \mbox{ a } \beta.\] Si verifica facilmente che questa è una relazione di equivalenza. Nel caso in cui $\Gamma$ sia il grafo orbitale di un orbitale $\Delta$, si può mostrare che $\approx$ è anche una $G$-congruenza. Sia $\alpha \approx \beta$ e si prenda un cammino da $\alpha$ a $\beta$ in $\Gamma$:
+    \[\alpha=\alpha_0,\alpha_1,\dotsc,\alpha_n=\beta\]
+    Sia $g \in G$. Allora la sequenza:
+    \[\alpha^g=\alpha_0^g,\alpha_1^g,\dotsc,\alpha_n^g=\beta^g\]
+    è un cammino da $\alpha^g$ a $\beta^g$ in $\Gamma$; il fatto che $\{\alpha_{i},\alpha_{i+1} \}$ sia un lato implica che $\left( \alpha_{i}, \alpha_{i+1} \right) \in \Delta$ oppure $\left(\alpha_{i+1},\alpha_{i}\right) \in \Delta$. 
+    Di conseguenza nel primo caso si ha $\left(\alpha_i^g,\alpha_{i+1}^g\right)=\left(\alpha_i,\alpha_{i+1}\right)^g \in \Delta$. Ciò vale anche nel secondo caso per $\left(\alpha_{i+1},\alpha_{i}\right)$. Quindi $\alpha^g \approx \beta^g$.
+\end{oss}
+Le classi di congruenza della relazione definita nell'\cref{oss:comp_connesse} sono dette \emph{componenti} del grafo orbitale.
+
+Diamo ora le definizioni di \emph{cammino orientato} e di \emph{grafo fortemente connesso}, che possono essere viste come un rafforzamento dei concetti già visti di \emph{cammino} e di \emph{grafo connesso}.
+\begin{defn}[Cammino orientato di un grafo]
+    Un \emph{cammino orientato} da $\alpha$ a $\beta$ in un grafo orientato $\Gamma$ è una sequenza di vertici
+    \[\alpha=\alpha_0,\alpha_1,\ldots,\alpha_n=\beta\]
+    tale che $(\alpha_i,\alpha_{i+1})$ sia un lato orientato per ogni $i=0,\ldots,n-1$
+\end{defn}
+\begin{defn}[Grafo fortemente connesso]
+    Un grafo orientato $\Gamma$ è \emph{fortemente connesso} se per ogni coppia di vertici $\alpha,\beta$ esistono sia un cammino orientato da $\alpha$ a $\beta$ sia un cammino orientato da $\beta$ ad $\alpha$.
+\end{defn}
+\begin{oss}
+     In analogia con quanto già visto nell'\cref{oss:comp_connesse} si può mostrare che la relazione 
+     \[ \alpha \approx \beta \mbox{ se e solo se }\alpha=\beta \mbox{ oppure esiste un cammino orientato da } \alpha \mbox{ a } \beta\] 
+     è una $G$-congruenza. 
+\end{oss}
+\begin{theo}
+    Un grafo orbitale di $\aut$ è connesso rispetto ad un orbitale non diagonale.
+\end{theo}
+\begin{proof}
+    Nell'\cref{es:orbitaleq} si è già osservato che $\aut$ ha due orbitali non diagonali. Sia $\Gamma$ il grafo orbitale di $\aut$ per l'orbitale $\Delta=\{(p_1,p_2)\mid p_1<p_2\}$. Data una qualsiasi coppia $q_1,q_2$ di elementi distinti di $\Q$ allora $(q_1,q_2) \in \Delta$ oppure  $(q_2,q_1) \in \Delta$, dunque $\Gamma$ è connesso. La dimostrazione per l'altro orbitale è analoga.
+\end{proof}
+\begin{oss}
+    Il grafo orbitale di $\aut$ non è fortemente connesso. Se per assurdo lo fosse allora ciascun orbitale dovrebbe contenere $(q_1,q_2)$ e $(q_2,q_1)$ per ogni $q_1,q_2 \in \Q$ distinti, ma questo è assurdo in quanto implicherebbe $q_1<q_2$ e $q_1>q_2$.
+\end{oss}
+Infine mostriamo il seguente risultato, che è stato dimostrato da D. G. Higman.
+\begin{theo}
+    Sia $\Omega$ un \Gsp transitivo. Allora $\Omega$ è primitivo se e solo se per ogni orbitale $\Delta$, eccetto l'orbitale diagonale, il grafo orbitale di $\Delta$ è connesso.
+\end{theo}
+\begin{proof}
+    Supponiamo $\Omega$ primitivo e sia $\Delta$ un orbitale non diagonale. Si consideri la relazione $\approx$ definita per i vertici del grafo orbitale di $\Delta$ per la quale $\alpha \approx \beta$ se e solo se $\alpha=\beta$ oppure esiste un cammino da $\alpha$ a $\beta$. Si è già visto nell'\cref{oss:comp_connesse} che tale relazione è una $G$-congruenza. Per la primitività di $\Omega$, $\approx$ è banale o universale. Poiché $\Delta$ non è l'orbitale diagonale, allora $\Delta=\left(\alpha,\beta\right)^G$ con $\alpha \neq \beta$. Poiché $\alpha \approx \beta$ allora $\approx$ non è la congruenza banale, dunque è la congruenza universale. Questo significa che nel grafo orbitale di $\Delta$ due vertici qualsiasi sono sempre collegati da un cammino, dunque il grafo orbitale di $\Delta$ è connesso.\\
+    Viceversa supponiamo che ogni grafo orbitale non banale sia connesso. Per assurdo sia $\Pi$ un blocco non banale, con $\alpha, \beta \in \Pi \mbox{ e } \alpha \neq \beta$. Per ipotesi il grafo orbitale di $(\alpha,\beta)^G$ è connesso. Poiché $\Pi$ non è tutto $\Omega$, allora nell'orbitale deve esserci almeno un lato che abbia un vertice in $\Pi$ e l'altro non in $\Pi$. Tale richiesta equivale a chiedere che esista $g \in G$ tale che a $\Pi$ appartenga uno solo tra $\alpha^g$ e $\beta^g$, ma questo contraddice il fatto che $\Pi$ sia un blocco. Dunque $\Pi=\Omega$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%    CAPITOLO 3   %%%%%%%%%%%%%%%%%%%%%%
+\chapter{Teorema di Cantor}
+
+In quest'ultimo capitolo ci occuperemo principalmente della trattazione del Teorema di Cantor, un risultato molto significativo riguardante le permutazioni dei razionali che conservano l'ordine; ne discuteremo le ipotesi attraverso degli esempi ed infine mostreremo ulteriori proprietà di $\aut$ che si possono ricavare proprio grazie a questo teorema.
+
+\section{Teorema di Cantor}
+Enunciamo alcune premesse prima di formulare il teorema. Diciamo che un insieme è \emph{numerabile} se esiste una corrispondenza biunivoca tra l'insieme stesso e l'insieme dei numeri naturali $\mathbb{N}$. Ciascuna corrispondenza biunivoca è detta \emph{numerazione dell'insieme}.
+
+\begin{theo}[Teorema di Cantor]\label{theo:cantor}
+    Per ogni insieme $A$ numerabile totalmente ordinato, denso e senza estremi esiste un isomorfismo d'ordine $\varphi: \Q \rightarrow A$.
+\end{theo}
+\begin{proof}
+    Sia $A$ un insieme con le proprietà richieste e sia $<$ la relazione d'ordine su $A$.
+    Poiché $\Q$ ed $A$ sono numerabili, siano $\Q=\{q_0,q_1,\ldots\}$ e $A=\{a_0,a_1,\ldots \}$ due numerazioni rispettivamente di $\Q$ e di $A$. Definiamo una mappa $\varphi: \Q \rightarrow A$ in maniera induttiva, fissando al $n$-esimo passo l'immagine di $q_n$ nella maniera seguente:
+    \begin{itemize}
+        \item[] \textbf{Passo 0}: Poniamo $\varphi(q_0)=a_0$.
+        \item[] \textbf{Passo n+1}: Supponiamo di aver definito l'immagine di $q_0,\ldots,q_n$ in modo tale che $\varphi$ preservi l'ordine e definiamo l'immagine di $q_{n+1}$ in modo tale da conservarlo. Rienumeriamo gli elementi di $\Q$ in modo tale che la numerazione rispetti l'ordine indotto su $\Q$; sia quindi $q_{i_0}<q_{i_1}<\ldots<q_{i_n}$ con $i_k \in {0,1,\ldots,n}$; per fissare l'immagine di $q_{n+1}$ ci riconduciamo ad uno dei seguenti casi:
+        \begin{itemize}
+            \item[] \textbf{Caso 1}: $q_{i_n}<q_{n+1}$. Poiché $A$ è un insieme senza estremi, allora in $A$ esiste almeno un elemento maggiore di $\varphi(q_{i_n})$. Sia $s$ il più piccolo indice degli elementi di $A$ con questa proprietà e poniamo $\varphi(q_{n+1})=a_s$.
+            \item[] \textbf{Caso 2}: $q_{n+1}<q_{i_0}$. Poiché $A$ è un insieme senza estremi, allora in $A$ esiste almeno un elemento minore di $\varphi(q_{i_0})$. Sia $s$ il più piccolo indice degli elementi di $A$ con questa proprietà e poniamo $\varphi(q_{n+1})=a_s$.
+            \item[] \textbf{Caso 3}: $q_{i_k}<q_{n+1}<q_{i_{k+1}}$. Per ipotesi induttiva $\varphi(q_{i_k})<\varphi(q_{i_{k+1}})$. Poiché $A$ è denso allora esiste almeno un elemento di $A$ compreso tra le due immagini. Sia $s$ il più piccolo indice degli elementi di $A$ con questa proprietà e poniamo $\varphi(q_{n+1})=a_s$.
+        \end{itemize} 
+    \end{itemize}
+    Procedendo in questa maniera si definisce l'immagine di ogni elemento di $\Q$ tramite $\varphi$. Chiaramente la funzione è iniettiva poiché le disuguaglianze sono strette e inoltre $\varphi$ conserva l'ordine poiché esso si conserva ad ogni passo. 
+
+    Mostriamo che $\varphi$ è anche suriettiva. Per assurdo supponiamo che non lo sia. Sia allora $m$ il più piccolo indice tale che $a_m \notin \mathrm{Im}(\varphi)$. Per la costruzione appena vista, i primi $m-1$ elementi della numerazione di $A$ sono immagine di qualche elemento di $\Q$, dunque esiste un indice $r$ tale che
+    \[\left\{a_0,a_1,\ldots,a_{m-1}\right\}\subseteq \left\{\varphi(q_0),\varphi(q_1),\ldots,\varphi(q_r)\right\}\]
+    Rinumeriamo gli elementi di $\Q$ in modo tale da avere $q_{i_0}<q_{i_1}<\ldots<q_{i_r} \mbox{ con } i_l \in \{0,1,\ldots,r\}$. Poniamo $b_l=\varphi(q_{i_l}) \in A$; di conseguenza si ha $b_0<b_1<\ldots<b_r$. Ora, in maniera analoga a prima, facciamo delle ipotesi sulla posizione di $a_m$ rispetto ai $b_l$.
+    \begin{itemize}
+    \item Supponiamo esista $l$ tale che $b_l<a_m<b_{l+1}$. Poiché $\varphi$ conserva l'ordine si ha $b_l=\varphi(q_{i_l})<\varphi(q_{i_{l+1}})=b_{l+1}$ se e solo se $q_{i_l}<q_{i_{l+1}}$. Per la densità di $\Q$ esistono dei numeri razionali tra $q_{i_l}$ e $q_{i_{l+1}}$. Sia $t$ il più piccolo indice dei numeri che hanno questa proprietà, dunque $q_t$ è tale che $q_{i_l}<q_t<q_{i_{l+1}}$. A questo punto al $t$-esimo passo della precedente costruzione avremmo dovuto porre $\varphi(q_t)=a_m$. Questo contraddice l'ipotesi $a_m \notin \mathrm{Im}(\varphi)$.
+    \item Se $a_m<b_0$ poiché $\Q$ è senza estremi esistono dei numeri razionali minori di $q_{i_0}$. Sia $t$ il più piccolo indice dei razionali che hanno questa proprietà. Come prima al $t$-esimo passo avremmo dovuto fissare $\varphi(q_t)=a_m$ e questo è assurdo.
+    \item In modo analogo se $b_r<a_m$ poiché $\Q$ è senza estremi esistono dei numeri razionali maggiori di $q_{i_r}$. Sia $t$ il più piccolo indice dei razionali che hanno questa proprietà. Al $t$-esimo passo avremmo dovuto fissare $\varphi(q_t)=a_m$.
+    \end{itemize}
+    Dunque $\varphi$ è suriettiva e questo conclude la dimostrazione.
+\end{proof}
+\begin{oss}
+    Come conseguenza immediata del teorema, dati due insiemi $A$ e $B$ numerabili, totalmente ordinati, densi e senza estremi, si ha che esiste un isomorfismo d'ordine $\phi:A\rightarrow B$.
+\end{oss}
+
+\subsection{Dimostrazione di tipo ``Back and forth''}
+
+L'argomentazione utilizzata nella dimostrazione appena vista del \cref{theo:cantor} per costruire l'isomorfismo d'ordine è chiamata \emph{``going forth"}. Ciò che la contraddistingue è il fatto che l'isomorfismo è costruito determinando ad ogni passo l'immagine di un elemento del dominio. 
+Il vantaggio di questa argomentazione è l'immediata deduzione dell'iniettività della mappa e del fatto che conserva l'ordine, ma in generale non sfrutta appieno la simmetria di $\Q$ ed $A$, ovvero il fatto che entrambi gli insiemi godono delle stesse proprietà.
+
+Diamo ora una dimostrazione alternativa del teorema che utilizza un'argomentazione detta \emph{``back and forth"} che tiene conto di questa simmetria. Il vantaggio principale di questa tecnica di dimostrazione è il fatto che la suriettività della mappa è garantita dalla costruzione e quindi non è necessario svolgere del lavoro aggiuntivo come accaduto nella dimostrazione precedente.
+
+\begin{proof}
+Costruiamo l'isomorfismo $\varphi$ per passi. Scegliamo due numerazioni di $\Q$ e di $A$ che indichiamo rispettivamente con $\{q_0,q_1,\ldots \}$ e $\{a_0,a_1,\ldots\}$.
+Ad ogni passo dispari fissiamo l'immagine di un elemento di $\Q$, mentre ad ogni passo pari fissiamo la controimmagine di un elemento di $A$.
+\begin{itemize}
+    \item[] \textbf{Passo 0}: Poniamo $\varphi(q_0)=a_0$.
+    \item[] \textbf{Passo dispari (2i+1)}: Sia $M \subseteq \Q$ l'insieme finito degli elementi di $\Q$ per i quali $\varphi$ è già stato definito al Passo 2i. Sia $j$ il più piccolo indice della numerazione di $\Q$ tale che $\varphi$ non è ancora definito per $q_j$. Sia $k$ il più piccolo indice della numerazione di $A$ tale che $a_k \notin \mathrm{Im}(\varphi)$ e tale che $\varphi$ conservi l'ordine ponendo $\varphi(q_j)=a_k$. Per mostrare che è sempre possibile scegliere l'indice $k$ procediamo come nella dimostrazione precedente: rinumeriamo gli elementi di $M$ in modo che la numerazione rispetti l'ordine indotto da $\Q$; sia quindi  $\{q_{l_0},q_{l_1},\ldots,q_{l_{m}}\}$ con $m=0,\ldots,2i$ una numerazione per $M$ tale che $q_{l_0}<q_{l_1}<\ldots<q_{l_{m}}$, si hanno i seguenti casi: 
+    \begin{itemize}
+        \item[] \textbf{Caso 1}: $q_{l_{m}}<q_{j}$. Poiché $A$ è un insieme senza estremi, allora in $A$ esiste almeno un elemento maggiore di $\varphi(q_{l_m})$. Sia $k$ il più piccolo indice degli elementi di $A$ con questa proprietà e poniamo $\varphi(q_j)=a_k$.
+        \item[] \textbf{Caso 2}: $q_j<q_{l_0}$. In modo analogo $A$ è un insieme senza estremi, allora in $A$ esiste almeno un elemento minore di $\varphi(q_{l_m})$. Sia $k$ il più piccolo il più piccolo indice degli elementi di $A$ con questa proprietà e poniamo $\varphi(q_j)=a_k$.
+        \item[] \textbf{Caso 3}: $q_{l_s}<q_{j}<q_{l_{s+1}}$. Per ipotesi $\varphi$ conserva l'ordine su $M$, quindi $\varphi(q_{l_s})<\varphi(q_{l_{s+1}})$. Poiché $A$ è denso allora esiste almeno un elemento di $A$ compreso tra le due immagini. Sia $k$ il più piccolo indice degli elementi di $A$ con questa proprietà e poniamo $\varphi(q_{j})=a_k$.
+    \end{itemize}
+    Allora $\varphi$ conserva l'ordine su $M \cup \{q_j\}$. 
+    \item[] \textbf{Passo pari (2i+2)}: Sia $N \subseteq A$ l'insieme delle immagini di $\varphi$ definito fino al Passo (2i+1). Sia $j$ il più piccolo indice della numerazione di $A$ tale che $a_j \notin N$. Sia $k$ il più piccolo indice della numerazione di $\Q$ tale che $\varphi(q_k)$ non è ancora stato definito e tale che $\varphi$ conservi l'ordine ponendo $\varphi(q_k)=a_j$. Si osservi che l'esistenza di $k$ è assicurata dallo stesso procedimento visto nel passo dispari, sostituendo $N$ ad $M$, $\varphi^{-1}$ a $\varphi$ e $\Q$ ad $A$. Si osservi che $\varphi$ conserva l'ordine sull'insieme $\varphi^{-1}(N) \cup \{q_k\}$.
+\end{itemize}
+
+In questo modo la mappa è suriettiva perché ogni elemento di $A$ viene scelto almeno una volta o come immagine di un elemento di $\Q$ (passo dispari) oppure definendo la sua controimmagine per $\varphi$ su $\Q$ (passo pari). Inoltre per costruzione $\varphi$ è chiaramente iniettiva e conserva l'ordine.
+\end{proof}
+
+Un altro vantaggio della dimostrazione di tipo \emph{``back and forth''} è il fatto di essere una tecnica di dimostrazione più forte e più versatile rispetto alla precedente \emph{``going forth''}. Mostriamo ora un caso in cui non è sufficiente una dimostrazione \emph{``going forth''}, ma in cui è valida una dimostrazione di tipo \emph{``back and forth''}.
+
+Prima di esporre l'esempio è necessario mostrare l'esistenza di un codice di colorazione denso dei numeri razionali. Con ciò intendiamo il fatto di poter colorare i numeri razionali utilizzando due colori, ad esempio rosso e blu, in modo tale che tra due punti qualsiasi di colore rosso ne esista almeno uno di colore blu e tra due punti di colore blu ne esista almeno uno di colore rosso. Per fare questo utilizziamo alcune proprietà già conosciute dei razionali. Sappiamo già infatti che l'insieme delle frazioni diadiche, ovvero l'insieme dei razionali che si possono scrivere nella forma $\frac{a}{2^m}$ per qualche $m \in \N$ e per qualche $a \in \mathbb{Z}$, è denso nell'insieme dei numeri razionali. Coloriamo dunque tutte tutte le frazioni diadiche di rosso e tutti gli altri razionali di blu. È chiaro che per la densità delle frazioni diadiche si ha che quello indicato ora è un codice di colorazione denso dei numeri razionali.
+
+Procediamo con l'esempio.
+
+\begin{es}
+    Sia $(A,<)$ un insieme numerabile, totalmente ordinato, denso e senza estremi. Per il \cref{theo:cantor} tale insieme è isomorfo a $(\Q,<)$ e inoltre quest'ultimo, per quanto visto sopra, ha un sottoinsieme denso il cui complementare è ancora denso. Dunque anche in $A$ esistono due sottoinsiemi fatti in questo modo. Diciamo che i punti del sottoinsieme in $A$ sono rossi e quelli del suo complementare sono blu. Usando una dimostrazione di tipo \emph{``back and forth''} si può provare che esiste un isomorfismo d'ordine che ristretto ai due sottoinsiemi rimane tale, ovvero che esiste una funzione biunivoca che conserva l'ordine tale che ad ogni punto rosso in $A$ è associato un punto rosso in $\Q$ e ad ogni punto blu in $A$ è associato un punto blu in $\Q$.
+
+    In questo caso una argomentazione di tipo \emph{``going forth''} non è sufficiente. Per rendere chiaro questo mostreremo che date due numerazioni dell'insieme $A$, ad una delle due potrebbe non essere associato un automorfismo utilizzando una argomentazione \emph{``going forth''}. Ciò accade perché in qualsiasi modo si scelga la seconda numerazione di $A$ è sempre possibile scegliere la prima numerazione in modo tale che la mappa definita dall'argomentazione \emph{``going forth''} non sia suriettiva. Mostriamo questo nel dettaglio.
+
+    \medskip Sia $\{b_0,b_1,\dotsc\}$ una qualsiasi numerazione di $A$ e supponiamo di avere già scelto un'altra numerazione di $A$ prima di questa. Possiamo scegliere la prima numerazione $\{a_0,a_1,\dotsc\}$ di $A$ in modo tale che se $\varphi$ è la mappa definita dall'argomentazione \emph{``going forth''} allora $b_0 \notin \mathrm{Im}(\varphi)$.
+    \begin{itemize}
+        \item[] \textbf{Passo 0}: Sia $r$ il più piccolo indice tale che $b_r$ abbia un colore diverso da quello di $b_0$. In $A$ possiamo trovare un $a_0$ con lo stesso colore di $b_r$ tale che $b_0$ sia compreso tra $a_0$ e $b_r$. Poniamo $a_1=b_0$. Chiaramente si ha $\varphi(a_0)=b_r$ e $\varphi(a_1) \neq b_0$ ($\varphi$ deve conservare l'ordine).
+        \item[] \textbf{Passo $n$}: Supponiamo di avere già fissato nei passaggi precedenti $a_0,a_1,\dotsc,a_{n-1}$ in modo tale che quando $\varphi$ è stato definito su di essi tramite l'argomentazione \emph{``going forth''}, $b_0$ non è stato scelto come immagine per nessuno di essi. Sia ora $k$ il più piccolo indice tale che $b_k \notin \left\lbrace a_0,a_1,\dotsc,a_{n-1}\right\rbrace$. Poiché $n$ è finito esiste una rienumerazione 
+        \[a_{l_0}<a_{l_1}<\dotsc<a_{l_{n-1}}\]
+        per $l_i \in \left\lbrace 0,1,\dotsc,n-1\right\rbrace$. Sia $b_0 \in \left(\varphi(a_{l_j}),\varphi(a_{l_{j+1}})\right)$.
+        \begin{itemize}
+        \item[] \textbf{Caso 1}: Se $b_k \notin \left(a_{l_j},a_{l_{j+1}}\right)$ oppure se $b_k$ ha un colore diverso da $b_0$, poniamo $a_n=b_k$ per garantire che $\varphi(a_n)\neq b_0$, come già visto al Passo 0.
+        \item[] \textbf{Caso 2}: Supponiamo $b_k \in \left(a_{l_j},a_{l_{j+1}}\right)$ e che $b_k$ e $b_0$ abbiano lo stesso colore. Sia $m$ il più piccolo indice tale che $b_m \in \left(\varphi(a_{l_j}),b_0\right)$ e che $b_m$ abbia colore diverso da $b_0$ - per la densità della colorazione possiamo sempre sceglierlo - e sia $c$ un qualsiasi punto nell'intervallo $\left(b_k,a_{l_{j+1}}\right)$ che abbia lo stesso colore di $b_m$. Poniamo $a_n=c$ e $a_{n+1}=b_k$. In questo modo si ha $\varphi(a_n)=b_m$ e $\varphi(a_{n+1})=\varphi(b_k) \neq b_0$.
+        \end{itemize}
+        Nei casi in cui $b_0<a_{l_0}$ e $a_{l_n}<b_0$ si può fare un ragionamento analogo al precedente distinguendo dagli altri il caso in cui $b_k$ e $b_0$ abbiano lo stesso colore e in cui $b_k$ appartenga rispettivamente agli insiemi $(-\infty,a_{l_0})$ e $(a_{l_{n-1}},+\infty)$.
+    \end{itemize}
+    Al termine di questo procedimento si ottiene una numerazione $\left\lbrace a_0,a_1,\dotsc \right\rbrace$ di $A$ tale che $b_0$ non è contenuto nell'immagine di $\varphi$.
+\end{es}
+
+\subsection{Costruzione di automorfismi d'ordine di $\Q$}
+
+\begin{oss} \label{oss:intervcantor}
+    Ogni intervallo aperto di $\Q$ del tipo $\left(p,q \right) \mbox{, } \left(-\infty,p \right)$ o $\left(p,+\infty \right)$ per ogni $p,q \in \Q$ è un insieme numerabile, totalmente ordinato, denso e senza estremi. Dunque per il \cref{theo:cantor} ciascun intervallo è isomorfo a $\Q$ e tale isomorfismo conserva l'ordine.
+
+    \smallskip Sempre per il \cref{theo:cantor}, se un qualche $g \in \aut$ fissa un punto $p \in \Q$ allora le restrizioni di $g$ agli intervalli $\left(-\infty,p \right)$ e $\left( p,+\infty \right)$ sono ancora degli isomorfismi d'ordine definiti per tali intervalli.
+\end{oss}
+
+Grazie all'\cref{oss:intervcantor} e al \cref{theo:cantor} la dimostrazione del \cref{theo:k-omog} risulta notevolmente semplificata.
+
+\begin{theo}
+    L'azione di $\aut$ su $\Q$ è $k$-omogenea per ogni $k \in \N$.
+\end{theo}
+    Gli intervalli $A_i$ e $B_i$ definiti nella dimostrazione del \cref{theo:k-omog} sono gli stessi intervalli dell'\cref{oss:intervcantor} e quindi per il \cref{theo:cantor} esiste un isomorfismo d'ordine tra $A_i$ e $B_i$. Invece nel \cref{theo:k-omog} si è dovuto costruire esplicitamente un isomorfismo d'ordine lineare tra $A_i$ e $B_i$ per assicurarne l'esistenza. 
+
+\bigskip Il seguente lemma descrive un metodo per costruire esplicitamente un isomorfismo d'ordine tra due intervalli limitati in $\Q$.
+
+\begin{lem} \label{lem:costruzione_isomorf}
+    Siano $\bar{I}=[a,b]$ e $\bar{J}=[c,d]$ due intervalli limitati in $\R$ non degeneri con $a,b,c,d \in \Q$ e siano $I,J$ le restrizioni a $\Q$ di $\bar{I},\bar{J}$ entrambe private degli estremi. Sia inoltre $\bar{f}$ l'unica trasformazione lineare crescente tale che $\bar{f}\left(\bar{I}\right)=\bar{J}$ e sia $f$ la sua restrizione ad $I$, ovvero $f=\bar{f}|_I$. Allora $f$ è un isomorfismo d'ordine da $I$ in $J$.
+\end{lem}
+\begin{proof}
+    Osserviamo che $\bar{f}$ può essere costruita esplicitamente conoscendo gli estremi di $\bar{I}$ e $\bar{J}$, infatti:
+    \[\bar{f}(x)=mx+q \]
+    con ${m=\frac{d-c}{b-a}}$ e ${q=-ma+c}$.
+    È evidente dalla costruzione che $\bar{f}$ è un isomorfismo d'ordine. Mostriamo ora che $f$ è ben posta: per ipotesi $a,b,c,d \in \Q$ e quindi è ovvio che $f$, definita come restrizione di $\bar{f}$ all'insieme dei razionali, ha immagine contenuta in $\Q$. Infine $f$ è un isomorfismo d'ordine e questo lo si ricava facilmente dal fatto che lo è $\bar{f}$.
+\end{proof}
+
+L'esistenza di un isomorfismo d'ordine tra due insiemi numerabili è facilmente verificabile grazie al \cref{theo:cantor}, tuttavia la costruzione esplicita di un tale isomorfismo d'ordine è cosa tutt'altro che ovvia.
+
+Vediamo ora un esempio in cui viene costruito esplicitamente un isomorfismo d'ordine $\varphi$ tra $\Q$ e $\Q\0$.
+\begin{es} 
+    Scegliamo innanzitutto un numero irrazionale, ad esempio $\sqrt{2}$. Si osservi che gli insiemi $A=\left\{q \in \Q \mid \sqrt{2}<q\right\}$ e $B=\left\{q \in \Q \mid q<\sqrt{2}\right\}$ soddisfano le ipotesi del \cref{theo:cantor} e inoltre $\Q$ è unione disgiunta di $A$ e $B$. Definiremo due isomorfismi d'ordine $\varphi_1:A \rightarrow \Q^+$ e $\varphi_2:B \rightarrow \Q^-$ che sono le restrizioni di $\varphi$ agli insiemi $A$ e $B$, ovvero $\varphi |_A = \varphi_1$ e $\varphi |_B = \varphi_2$.
+
+    Iniziamo con la costruzione esplicita dell'isomorfismo d'ordine $\varphi_1$.
+    In $A$ si consideri $(p_n)_{n \in \mathbb{N}}$ una successione definita per $n \geq 1$ strettamente decrescente, ovvero tale che $p_{n+1}<p_{n}$, e convergente a $\sqrt{2}$. In $\Q^+$ si consideri invece la successione $\left(\frac{1}{n}\right)_{n \in \mathbb{N}}$ definita per $n \geq 1$.
+    Definiamo $\varphi$ sugli elementi della successione in $A$ ponendo $\varphi_1(p_n)=\frac{1}{n}$.
+    Per i restanti numeri razionali definiamo $\varphi_1$ nel seguente modo: sia $(A_n)$ la famiglia di insiemi contenuti in $A$ tale che $A_0=A \cap (p_1,+\infty)$ e $A_n=A \cap (p_{n+1},p_n)$ per ogni $n \in \mathbb{N}, n\geq 1$ e sia inoltre $(B_n)$ la famiglia di insiemi contenuti in $\Q^+$ tale che $B_0=B \cap (1,+\infty)$ e $B_n=B \cap (\frac{1}{n+1},\frac{1}{n})$ per $n \geq 1$.
+    Vogliamo definire una famiglia numerabile di funzioni $f_n:A_n \rightarrow B_n$ per ogni $n \in\mathbb{N}$.
+
+    Per $n=0$ poniamo: \[f_0(q)=q-p_1+1 \mbox{ }\] Si osservi che tale funzione conserva l'ordine ed è invertibile, dunque è un isomorfismo d'ordine tra $A_0$ e $B_0$.
+
+    Per $n \geq 1$ definiamo $f_n$ come nel \cref{lem:costruzione_isomorf}. Per il lemma $f_n$ è un isomorfismo d'ordine e inoltre il lemma stesso fornisce una costruzione esplicita di tale funzione.
+
+    Si osservi che se $q \in A$ allora o $q=p_n$ per uno e un solo $n$, oppure esiste unico $n$ tale che $q \in A_n$.
+    Dunque $\varphi_1$ è definito nel seguente modo:
+    \[\varphi_1(q)=
+    \begin{cases} 
+    \frac{1}{n} & \mbox{se } q=p_n \\ 
+    f_n(q) & \mbox{se } q \in A_n   
+  \end{cases}\]
+   Per costruzione $\varphi_1$ è biettivo e conserva l'ordine, dunque è un isomorfismo d'ordine.
+
+   Si noti che è possibile costruire $\varphi_2$ esplicitamente con un procedimento analogo, scegliendo $(p_n)_{n \in \mathbb{N}}$ una successione in $B$ strettamente crescente e convergente a $\sqrt{2}$ e in $\Q^-$ la successione $\left(-\frac{1}{n}\right)$ con $n \in \mathbb{N},n \geq 1$.
+\end{es}
+
+Nel \cref{theo:cantor} l'ipotesi che $\Q$ ed $A$ siano due insiemi numerabili è una ipotesi necessaria, infatti il teorema non è generalizzabile ad insiemi qualsiasi. La proposizione seguente mostra che non è possibile costruire un isomorfismo d'ordine tra $\R$ ed $\R\0$.
+\begin{prop}
+Non esiste un isomorfismo d'ordine tra $\R$ ed $\R\0$.
+\end{prop}
+\begin{proof}
+    Si osservi che $\R$,$\R\0$,$\R^+,\R^-$ sono insiemi totalmente ordinati, densi e senza estremi. Si osservi inoltre che la densità di un insieme è condizione necessaria, ma non sufficiente affinché tale insieme sia un intervallo.
+
+	\noindent Supponiamo per assurdo che esista un isomorfismo d'ordine $\theta: \R \rightarrow \R\0$. Mostriamo che $\theta$ non può essere suriettivo.
+	Si scriva $\R\0=\R^+\cup\R^-$. Mostriamo che l'immagine di $\theta$ è inclusa o tutta in $\R^+$ oppure tutta in $\R^-$.
+    Definiamo l'insieme:
+    \[A=\left\{x \in \R \mid \theta(x) \in \R^+ \right\}\]
+    Se $A=\emptyset$ allora non c'è nulla da dimostrare perché l'immagine è tutta contenuta in $\R^-$ e dunque $\theta$ non è suriettivo.
+    
+    Sia allora $x \in A\neq\emptyset$ e dunque $\theta(x) \in \R^+$. Mostriamo che $A$ è un insieme totalmente ordinato, denso e senza estremi:
+    \begin{itemize}
+    \item[-] $A\subseteq \R$ e quest'ultimo è un insieme totalmente ordinato, quindi anche $A$ lo è.
+    \item[-] $A$ è un intervallo: infatti per ogni $x,y \in A$, esiste $a \in \R^+$ tale che $\theta(x)<a<\theta(y)$ per la densità di $\R^+$. Inoltre $\theta$ è suriettivo e conserva l'ordine, quindi $x< \theta^{-1}(a)<y$. Per definizione di $A$ si ha $\theta^{-1}(a) \in A$ e quindi $A$ è un intervallo. Se è un intervallo allora è denso.
+    \item[-] $A$ è senza estremi: Poiché $\R^+$ è senza estremi, allora per ogni $x \in A$ esistono $a,b \in \R^+$ tali che $a<\theta(x)<b$. Per ipotesi $\theta$ è suriettivo e conserva l'ordine, quindi esistono $x,y \in \R$ tali che $\theta(y)=a$, $\theta(z)=b$ e tali che $y<x<z$. Per definizione di $A$, $x,y \in A$.
+    \end{itemize}
+    Si osservi che $\sup(A),\inf(A)\notin A$, perché $A$ è senza estremi.
+
+    Inoltre $A$ contiene tutta la semiretta $\left[a,+\infty\right)$ per ogni $a \in A$: se $y \in \R$ tale che $y \geq a$ allora $\theta(y)=\theta(a) \in \R^+$ poiché $\theta$ conserva l'ordine e quindi $y \in A$. Allora $A$ è superiormente illimitato.
+
+    Mostriamo che $A$ è anche inferiormente illimitato: se fosse $\inf (A)=y \in \R$ allora dovrebbe esistere $z \in \R^-$ tale che $z> \theta(y)$ dato che $\R^-$ è senza estremi. 
+    Come prima $\theta$ è suriettivo e conserva l'ordine e quindi $\theta^{-1}(z)>y$ e $\theta^{-1}(z) \notin A$, ma questo contraddice la massimalità di $\inf(A)$.
+
+    Concludendo, fino ad ora si è mostrato che $A$ è un intervallo, è illimitato superiormente e inferiormente in $\R$, dunque $A$ è proprio $\R$ e cioè $\mathrm{Im}(\theta) \subseteq \R^+$. Questo significa che tutta l'immagine di $\theta$ è contenuta in $\R^+$ o in $\R^-$, ma questo è assurdo perché per ipotesi $\theta$ è un isomorfismo, quindi suriettivo e cioè $\mathrm{Im}(\theta)=\R\0$. 
+\end{proof}
+
+
+\section{Cardinalità di $\aut$}
+Dedichiamo ora questa parte della tesi al calcolo della cardinalità dell'insieme $\aut$. Riprendiamo alcuni concetti sulla cardinalità degli insiemi. 
+
+Ricordiamo che due insiemi $A$ e $B$ hanno la stessa cardinalità se esiste una corrispondenza biunivoca tra gli elementi di $A$ e quelli di $B$.
+
+All'inizio del capitolo è già stata enunciata la definizione di insieme numerabile. Indichiamo con il simbolo $\aleph_0$ la cardinalità di un insieme numerabile, ovvero se $A$ è un insieme numerabile poniamo $\aleph_0=|A|=|\N|$. Ricordiamo che $\Z,\Q,\Q^n$ sono tutti insiemi con cardinalità $\aleph_0$. Per i teoremi riguardanti l'aritmetica delle cardinalità si faccia riferimento a \cite{hunger}.
+
+Vogliamo dimostrare la seguente proposizione:
+\begin{prop}\label{prop:card_aut}
+    $\aut$ ha cardinalità $2^{\aleph_0}$.
+\end{prop}
+Prima di esporre la dimostrazione della \cref{prop:card_aut} è necessario mostrare alcuni risultati utili alla dimostrazione.
+Cominciamo con un risultato di teoria degli insiemi.
+\begin{prop} \label{prop:card_ins_Z}
+    L'insieme delle parti di $\Z$ ha cardinalità più che numerabile. Inoltre i sottoinsiemi di $\Z$ di cardinalità finita sono una quantità numerabile e dunque i sottoinsiemi di cardinalità infinita sono una quantità più che numerabile.
+\end{prop}
+\begin{proof}
+Mostriamo che possiamo associare ciascun sottoinsieme $A$ di $\Z$ ad una lista infinita in $\left\lbrace0,1\right\rbrace$. Basta considerare la funzione $f_A:\Z\rightarrow \{0,1\}$ tale che \[f_A(z)= \begin{cases}1 & \mbox{ se } z \in A \\ 0 & \mbox{ se } z \notin A  \end{cases}\]
+Si osservi che tale funzione $f_A$ è unicamente associata all'insieme $A$, dunque vi è corrispondenza biunivoca tra i sottoinsiemi di $\Z$ e le liste infinite in $\{0,1\}$. Per il procedimento diagonale di Cantor le liste infinite sono più che numerabili, dunque anche i sottoinsiemi di $\Z$ lo sono.
+
+Mostriamo ora la seconda parte del teorema. Sia ora $A$ un sottoinsieme di $\Z$ di cardinalità finita $k \in \N$. Poiché la sua cardinalità è finita, esiste un indice finito $\overline{m}$ della lista $f_A(\Z)$ tale che per ogni $n \geq \overline{m}, \left(f_A(z)\right)_n=0$. In tal caso la lista $f_A(\Z)$ è una lista infinita che però può essere associata ad una lista finita, dato che da un certo indice in poi gli elementi della lista infinita sono tutti $0$. Fissato $\overline{m}$, il numero di liste finite che possono essere scelte come immagine di $A$ sono una quantità finita, precisamente $\left(\overline{m}\right)^k$. Se consideriamo ora tutte le liste finite in $\{0,1\}$ che possono essere scelte al variare di $k$ ed $\overline{m}$ per $k \geq 1$ e per $m \in \N$, esse sono al più una quantità numerabile (si veda \cite[Introduction, Theorem 8.12]{hunger}).  Di conseguenza anche i sottoinsiemi di $\Z$ di cardinalità finita sono al più numerabili.
+\end{proof}
+
+Indichiamo con $2^{\aleph_0}$ la cardinalità dell'insieme delle parti di $\N$. Poiché $\Z$ è numerabile, anche l'insieme delle parti di $\Z$ ha cardinalità $2^{\aleph_0}$.
+
+Definiamo ora le $\Z$-sequenze in $\Q$ e mostriamo che esse sono una quantità non numerabile.
+\begin{defn}
+Una $\Z$-sequenza in $\Q$ è una sequenza $\left\{\xi_n \right\}_{n \in \Z}$ di razionali tali che $\xi_n<\xi_{n+1}$ per ogni $n$ e tale che $\xi_n \rightarrow \pm \infty$ per $n \rightarrow \pm \infty$.
+\end{defn}
+\begin{prop} \label{prop:card_Z_seq}
+    L'insieme delle $\Z$-sequenze in $\Q$ ha cardinalità maggiore o uguale a $2^{\aleph_0}$.
+\end{prop}
+\begin{proof}
+Per la \cref{prop:card_ins_Z} i sottoinsiemi infiniti di $\Z$ sono una quantità non numerabile. Dimostriamo che è possibile costruire una funzione iniettiva $f$ che associa ciascun sottoinsieme infinito di $\Z$ ad una $\Z$-sequenza e l'esistenza di tale funzione permette di ottenere la tesi.
+
+Sia $A$ un sottoinsieme infinito di $\Z$. Poniamo $f(A)=\xi_A$ dove $\xi_A=\left(\xi_n\right)_{n \in \Z}$ è la sequenza in cui:
+\[ \xi_n=\begin{cases}n & \mbox{ se } n \in A \\ n-\frac{1}{2} & \mbox{ se } n \notin A \end{cases}\]
+Tale sequenza è una $\Z$-sequenza: Infatti $\xi_A$ è monotona crescente in quanto per ogni $n$ si ha $n-\frac{1}{2}\leq \xi_n \leq n$ e $n+\frac{1}{2}\leq \xi_{n+1} \leq n+1$, dunque $\xi_n \leq \xi_{n+1}$. Inoltre è ovvio che per $n \rightarrow \pm \infty$ anche $\xi_n \rightarrow \pm \infty$.
+
+Mostriamo l'iniettività di $f$. Per ogni $\Z$-sequenza $\xi_A$ che è immagine tramite $f$ di un qualche insieme $A$ si ha in particolare che ${\mathrm{Im}(\xi_A) \cap \Z=A}$.
+Infatti per definizione di $\xi_A$ se $n \in A$ allora $\xi_A(n)=\xi_n=n$ e quindi ${A \subseteq \mathrm{Im}(\xi_A) \cap \Z}$, viceversa se $n \in \mathrm{Im}(\xi_A) \cap \Z$ allora per qualche $m$ si ha $n=\xi_m$. Per costruzione $\xi_m$ può essere uguale ad $m$ oppure ad $m-\frac{1}{2}$, ma solo il primo è un intero e quindi $n=m \in A$.
+
+Se per assurdo $\xi_A=\xi_B$ per qualche $A$ e $B$ sottoinsiemi infiniti di $\Z$, allora si dovrebbe avere $A=\mathrm{Im}(\xi_A) \cap \Z=\mathrm{Im}(\xi_B) \cap \Z=B$.
+\end{proof}
+Mostriamo ora un'ultima proposizione riguardante le $\Z$-sequenze prima di dimostrare la \cref{prop:card_aut}.
+\begin{prop} \label{prop:Z_seq_trans}
+    $\aut$ agisce transitivamente sull'insieme delle $\Z$-sequenze in $\Q$.
+\end{prop}
+\begin{proof}
+    In $\Q$ fissiamo una $\Z$-sequenza $\xi=\left(\xi_n\right)_{n \in \Z}$. Mostriamo che per ogni $\left(\eta_n\right)_{n \in \Z}$ esiste $g \in \aut$ tale che $\left(\xi_n\right)^g=\left(\eta_n\right)$. Consideriamo la funzione $h$ definita sull'insieme dei valori di $\xi$ tale che $\xi_n^h=\eta_n$ per ogni $n \in \N$. Si può subito notare che $h$ conserva l'ordine. 
+    Estendiamo $h$ ad un automorfismo dei numeri razionali $g$ utilizzando il \cref{lem:costruzione_isomorf}: sia $\left(A_n\right)$ la famiglia degli intervalli in $\Q$ del tipo $\left(\xi_{n},\xi_{n+1}\right)$ e sia $\left(B_n\right)$ la famiglia degli intervalli in $\Q$ del tipo $\left(\eta_{n},\eta_{n+1}\right)$. Per il \cref{lem:costruzione_isomorf}, per ogni $n$ esiste un isomorfismo d'ordine $\varphi_n: A_n \rightarrow B_n$. 
+
+    Osserviamo che $\left(\cup_{n \in \Z}A_n\right)\cup\{\xi_n \mid n \in \Z\}$ è una partizione di $\Q$. Definiamo allora la funzione $g: \Q \rightarrow \Q$ nel modo seguente:
+    \[ g(q)=\begin{cases}\xi_i^h & \mbox{ se } q=\xi_i \\ \varphi(q) & \mbox{ se } q \in A_i \end{cases}\]
+    Per costruzione, $g \in \aut$ ed è tale che $\left(\xi_n\right)^g=\left(\eta_n\right)$.
+\end{proof}
+Possiamo ora dimostrare la \cref{prop:card_aut}.
+\begin{proof}
+    Si fissi una $\Z$-sequenza $\left(\xi_n\right)_{n \in \Z}$.
+    Per la \cref{prop:Z_seq_trans} $\aut$ agisce transitivamente sull'insieme delle $\Z$-sequenze in $\Q$, dunque per qualsiasi altra $\Z$-sequenza $\left(\eta_n\right)_{n \in \Z}$ esiste $g \in \aut$ tale che $\left(\xi_n\right)^g=\nolinebreak \left(\eta_n\right)$. 
+    Poiché la $\Z$-sequenza iniziale $\left(\xi_n\right)$ è fissata, tutti gli automorfismi $g$ sono distinti tra loro, dunque ne devono esistere una quantità non numerabile poiché per la \cref{prop:card_Z_seq} le $\Z$-sequenze in $\Q$ non sono numerabili. Dunque $|\aut|\geq 2^{\aleph_0}$.
+
+    Per mostrare l'altra disuguaglianza si consideri l'insieme $\mathcal{F}$ delle funzioni $f:\Q \rightarrow \Q$. Chiaramente $\aut$ è contenuto in tale insieme. Una funzione $f$ può essere vista come un particolare sottoinsieme di $\Q^2$ nel quale per ogni coppia la prima componente rappresenta un elemento del dominio di $f$ e la seconda componente rappresenta l'immagine del primo elemento. Dunque esiste una funzione iniettiva che associa ciascuna funzione $f$ ad un sottoinsieme di $\Q^2$ fatto in questo modo. 
+    Ricordiamo che $\Q^2$ è un insieme numerabile e il suo insieme delle parti ha cardinalità $2^{\aleph_0}$. Allora l'insieme delle funzioni $f:\Q \rightarrow \Q$ non può avere cardinalità maggiore di $2^{\aleph_0}$ e quindi $|\aut| \leq |\mathcal{F}| \leq  2^{\aleph_0}$. 
+    
+    Quindi $|\aut|= 2^{\aleph_0}$.
+\end{proof}
+
+\section{Oligomorfia}
+
+\begin{defn}
+    Sia $\Omega$ un \Gsp e sia $\Delta \subseteq \Omega$. \\ Chiamiamo \emph{stabilizzatore dell'insieme} $\Delta$ in $G$ l'insieme
+    \[G_{\{\Delta\}}=\left\lbrace g \in G \centering\mid \Delta^g=\Delta \right\rbrace.\]
+    Chiamiamo \emph{stabilizzatore puntuale di} $\Delta$ in $G$ l'insieme
+    \[G_{(\Delta)}=\left\lbrace g \in G \centering\mid \delta^g=\delta \mbox{ per ogni } \delta \in \Delta \right\rbrace.\]
+\end{defn}
+Si può osservare che entrambi gli insiemi $G_{\{\Delta\}}$ e $G_{(\Delta)}$ sono dei sottogruppi di $G$. Inoltre tali insiemi coincidono quando $\Delta$ è un insieme contenente un solo elemento e in particolare coincidono con la \cref{defn:stab}, in cui si è definito lo stabilizzatore di un punto in $G$. 
+
+Si osservi inoltre che $G_{(\Delta)} \trianglelefteq G_{\{\Delta\}}$; dimostriamo che per ogni $g \in G_{\{\Delta\}}$, se $h \in G_{(\Delta)}$ allora $g^{-1}hg \in G_{(\Delta)}$. Ciò equivale a dire che $p^{g^{-1}hg}=p$ per ogni $p \in \Delta$. Sia $p \in \Delta$, allora $p^{g^{-1}} \in \Delta$. Per ipotesi $h \in G_{(\Delta)}$, quindi $p^{g^{-1}h}=p^{g^{-1}}$. Perciò:
+\[p^{g^{-1}hg}=\left(p^{g^{-1}h}\right)^{g}=\left(p^{g^{-1}}\right)^{g}=p^{g^{-1}g}=p.\]
+
+Dunque è possibile definire l'insieme $G^\Delta$ come l'insieme quoziente dei due sottogruppi, ovvero:
+\[G^\Delta=G_{\{\Delta\}}/ G_{(\Delta)}.\]
+Tale insieme rappresenta il gruppo delle permutazioni indotte da $G_{\{\Delta\}}$ su $\Delta$. \\
+Quest'ultima definizione e l'\cref{oss:intervcantor} permettono di mostrare il seguente risultato:
+\begin{cor}
+    Sia $G=\aut$ e sia $p \in \Q$. Definiamo:
+    \[\Q_{<p}=\left\lbrace q \in \Q \centering\mid q < p \right\rbrace \mbox{ e  } \Q_{>p}=\left\lbrace q \in \Q \centering\mid q > p \right\rbrace .\]
+    Allora lo stabilizzatore $\stab{p}$ di $p$ in $G$ è tale che:
+    \[\stab{p}=G^{\Q_{<p}}\times G^{\Q_{>p}} \cong \aut \times \aut.\]
+\end{cor}
+\begin{proof} Per semplicità poniamo $\Delta=\Q_{<p}$ e $\Gamma=\Q_{>p}$.
+    In primo luogo mostriamo che $G^{\Delta} \cong \mathrm{Aut} ( \Delta,< )$. Ricordiamo che per definizione $G^{\Delta}=G_{\{\Delta\}} / G_{(\Delta)}$. 
+    Sia $\tilde{\varphi} \in \mathrm{Aut} ( \Delta,< )$. Costruiamo $\varphi \in G_{\{\Delta\}}$ in modo tale che:
+    \[ \varphi|_{\Delta}=\tilde{\varphi},\; \varphi(p)=p,\; \varphi|_{\Gamma}=Id.\]
+    dove $Id$ è la funzione identità. Definiamo ora
+    \[\begin{array} {rccc}
+        F: & \mathrm{Aut} ( \Delta,< ) &\rightarrow &G^{\Delta} \\ 
+        & \tilde{\varphi} & \mapsto & G_{(\Delta)}\varphi
+    \end{array}\]
+Mostriamo che $F$ è l'isomorfismo che cerchiamo. È ovvio che tale funzione è un morfismo di gruppi.
+Inoltre $F$ è iniettiva: infatti $\tilde{\varphi} \in \mathrm{Ker}F \Leftrightarrow F(\tilde{\varphi}) = G_{(\Delta)} \Leftrightarrow G_{(\Delta)}\varphi=G_{(\Delta)} \Leftrightarrow \varphi|_{\Delta}=Id \Leftrightarrow \tilde{\varphi}=Id$.
+
+Sia ora $G_{(\Delta)}\psi \in G^{\Delta}$. Abbiamo che $\psi \in G_{\{\Delta\}}$, quindi ${\psi(\Delta)=\Delta}$. Poniamo $\tilde{\varphi}=\psi|_{\Delta}$ e mostriamo che $F(\tilde{\varphi})=G_{(\Delta)}\psi$.
+Ricordiamo che $F(\tilde{\varphi})=G_{(\Delta)}\varphi$ dove $\varphi|_{\Delta}=\tilde{\varphi}$. 
+Perciò si ha 
+\[{\tilde{\varphi}=\varphi|_{\Delta}=\psi|_{\Delta}} \Leftrightarrow {\left(\varphi \circ \psi^{-1}\right)|_{\Delta}=Id} \Leftrightarrow {\varphi \circ \psi^{-1} \in G_{(\Delta)}} \Leftrightarrow {G_{(\Delta)}\psi=G_{(\Delta)}\varphi}.\]
+Questo dimostra la suriettività di $F$.
+
+Mostriamo ora che $\stab{p} \cong \mathrm{Aut}( \Delta,< )\times \mathrm{Aut}( \Gamma,< )$.
+Questo isomorfismo può essere espresso dalla seguente mappa:
+\[\begin{array} {rccc}
+    \theta: & \stab{p} & \rightarrow & \mathrm{Aut} ( \Delta,< )\times \mathrm{Aut} ( \Gamma,< ) \\ 
+    & f & \mapsto & \left(f|_{\Delta},f|_{\Gamma}\right)
+\end{array}\]
+$\theta$ è chiaramente un morfismo iniettivo di gruppi. Si noti inoltre che per ogni $f \in \stab{p}$, poiché $f(p)=p$ e $f$ è un isomorfismo d'ordine, si ha $f(\Delta)=\Delta$ e $f(\Gamma)=\Gamma$. Sia ora  $\left(h_{\Delta}, h_{\Gamma}\right) \in  {\mathrm{Aut} ( \Delta,< )\times \mathrm{Aut} ( \Gamma,< )}$, cerchiamo $f \in \stab{p}$ tale che $\theta(f)=\left(h_{\Delta}, h_{\Gamma}\right)$. Definiamo $f$ tale che:
+\[ f|_{\Delta}=h_{\Delta},\; f(p)=p,\; f|_{\Gamma}=h_{\Gamma}.\]
+Si ha che $f \in \stab{p}$ ed è la funzione cercata, dunque $\theta$ è suriettivo.
+
+Osserviamo infine che gli insiemi $\Delta$ e $\Gamma$ soddisfano le ipotesi del \cref{theo:cantor}, dunque per il teorema esistono due isomorfismi d'ordine ${\varPhi_1: \Delta \rightarrow \Q}$ e ${\varPhi_2: \Gamma \rightarrow \Q}$. Ciò implica ${\mathrm{Aut} ( \Delta,< )}\cong {\aut} \cong {\mathrm{Aut} ( \Gamma,< )}$.
+\end{proof}
+
+\begin{defn}
+    Un gruppo $G$ che agisce su $\Omega$ è detto \emph{oligomorfo} nella sua azione su $\Omega$ se il numero di orbite di $G$ su $\Omega^k$ è finito per ogni $k \in \N$.
+\end{defn}
+ Si osservi che l'azione di $G$ su $\Omega^k$ è definita da \[\left(\omega_1,\ldots,\omega_n\right)^g=\left(\omega_1^g,\ldots,\omega_n^g\right).\]
+ \begin{prop}\label{prop:oligomorf}
+    Sia $\Omega^{\{k\}}$ la famiglia dei sottoinsiemi di $\Omega$ di cardinalità $k$.
+    Allora $G$ è oligomorfo nella sua azione su $\Omega$ se e solo se il numero di orbite di $G$ su $\Omega^{\{k\}}$ è finito per ogni $k \in \N$.
+ \end{prop}
+ \begin{proof}
+    Sia $\phi: \Omega^k \rightarrow \wp(\Omega)$ la mappa
+    \[(\omega_1,\omega_2,\ldots,\omega_k) \mapsto \{\omega_1,\omega_2,\ldots,\omega_k\}\]
+    Si osservi che $\phi$ è un $G$-morfismo e che la sua immagine è contenuta in $\bigcup_{j=1}^k \Omega^{\{j\}}$. 
+
+    Supponiamo $G$ oligomorfo nell'azione su $\Omega$. Poiché in un $G$-morfismo le orbite sono mappate in altre orbite (si veda l'\cref{es:azionegl}), se in $\Omega^k$ il numero di orbite è finito allora lo è anche anche in $\bigcup_{j=1}^k \Omega^{\{j\}}$ e dunque è finito anche in $\Omega^{\{k\}}$. \\
+    Viceversa siano le orbite di $G$ su $\Omega^{\{k\}}$ una quantità finita. Si osservi che ciascun elemento in $\bigcup_{j=1}^k \Omega^{\{j\}}$ è immagine tramite $\phi$ di al più $k!$ elementi di $\Omega^k$. Perciò la controimmagine di ogni $G$-orbita in $\bigcup_{j=1}^k \Omega^{\{j\}}$ è unione di al più $k!$ orbite in $\Omega^k$.
+    Dunque se le orbite di $G$ su $\Omega^{\{k\}}$ sono una quantità finita allora lo sono anche le orbite di $\Omega^k$.
+ \end{proof}
+ \begin{cor}
+    Il gruppo $\aut$ è oligomorfo su $\Q$.
+ \end{cor}
+ \begin{proof}
+    Per il \cref{theo:k-omog} $\aut$ è omogeneo per ogni $k \in \mathbb{N}$. Per definizione di k-omogeneità, dati due insiemi $\Gamma,\Delta$ di cardinalità $k$ esiste sempre $g \in \aut$ tale che $\Gamma^g=\Delta$. Dunque l'azione di $\aut$ su $\Q^{\{k\}}$ è transitiva e quindi l'orbita di $\aut$ su $\Q^{\{k\}}$ è unica per ogni $k$. La \cref{prop:oligomorf} conclude.
+ \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%% Indice e Bibliografia %%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\nocite{bhat}
+\nocite{dixon}
+\nocite{hunger}
+\printbibliography[heading=bibintoc]
+
+\end{document}

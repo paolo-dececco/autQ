@@ -1,0 +1,268 @@
+\documentclass[italian, aspectratio=169,bookmarks=false]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage[OT1]{fontenc}
+
+%\hypersetup{pdfpagemode=FullScreen}
+
+%Autore della presentazione
+\author[Paolo De Cecco]{\textbf{Relatore:} Marta Morigi \\ \textbf{Candidato:} Paolo De Cecco}
+
+% Comandi personalizzati
+\newcommand{\aut}{ \mathrm{Aut} ( \mathbb{Q},< ) } %Automorfismi d'ordine di Q
+\newcommand{\N}{\mathbb{N}} %Insieme dei naturali
+\newcommand{\Z}{\mathbb{Z}} %Insieme degli interi
+\newcommand{\Q}{\mathbb{Q}} %Insieme dei razionali
+\newcommand{\R}{\mathbb{R}} %Insieme dei reali
+\newcommand{\0}{\setminus\{0\}} %Per insiemi in cui viene tolta l'origine 
+\newcommand{\Gsp}{$G$-spazio~} %G-spazio
+\newcommand{\stab}[1]{G_{#1}}   %Stabilizzatori (l'argomento può essere un punto o un insieme)
+
+% Comandi per teoremi
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}
+\newtheorem{oss}[defn]{Osservazione}
+\newtheorem{es}[defn]{Esempio}
+
+\theoremstyle{plain}
+\newtheorem{theo}[defn]{Teorema}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollario}
+\newtheorem{prop}[defn]{Proposizione}
+
+%Personalizzazione della presentazione
+\usetheme[compress]{Berlin}
+\usecolortheme{beaver}
+\definecolor{bordeaux}{HTML}{A30000}
+\definecolor{fucsias}{HTML}{096FB0}
+
+\setbeamercolor{institute in head/foot}{fg=bordeaux}
+\setbeamercolor{block title}{bg=bordeaux}
+\setbeamercolor{block title alerted}{bg=fucsias}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercovered{dynamic}
+
+%Metadati della presentazione
+\title{Isomorfismi di ordine dei numeri razionali}
+\institute[Unibo]{Alma Mater Studiorum - Università di Bologna}
+\date{\today}
+
+
+%Codice per nascondere l'indice dalla barra di navigazione
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry%
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {%else
+    % removed \addtocontents commands
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\makeatother
+
+%%%%%%%%%%%%%%   INIZIO  DOCUMENTO   %%%%%%%%%%%%
+
+\begin{document}
+\frame{\titlepage}
+\section{Automorfismi d'ordine}
+\subsection{Introduzione}
+\begin{frame}
+    \frametitle{Introduzione}
+    \begin{block}{Insieme totalmente ordinato}
+        Un \emph{insieme totalmente ordinato} è una coppia $(A,<)$ dove $A$ è un insieme non vuoto e $<$ è una relazione binaria, detta \emph{relazione d'ordine di $A$}, che soddisfa le proprietà:
+        \begin{enumerate}
+            \item per ogni $x \in A$, si ha $x \nless x$ (Irriflessività);
+            \item per ogni $x,y \in A$, si ha che $x<y \mbox{ implica } y \nless x$ (Antisimmetria);
+            \item per ogni $x,y,z \in A$, se $x<y \mbox{ e } y<z$, allora $x<z$ (Transitività);
+            \item per ogni $x,y \in A$, vale solo una delle proposizioni: (Linearità)
+            \[x<y,\medspace x=y,\medspace y<x\]
+        \end{enumerate}
+    \end{block}
+\end{frame}
+\begin{frame}
+    \begin{block}{Insieme denso}
+        Un insieme totalmente ordinato $A$ è \emph{denso} se per ogni $x,y \in A$ con $x<y$ esiste $z \in A$ tale che $x<z<y$.
+    \end{block} \pause
+    \begin{block}{Insieme senza estremi}
+        Un insieme totalmente ordinato $A$ è \emph{senza estremi} se per ogni $x \in A$ esistono $y,z \in A$ tali che $y<x<z$.
+    \end{block} \pause
+    \begin{center}
+            L'insieme $\Q$ dotato dell'ordine naturale è un insieme totalmente ordinato, denso e senza estremi.
+    \end{center}
+\end{frame}
+\begin{frame}
+    \frametitle{Automorfismi d'ordine}
+    \begin{block}{Isomorfismo d'ordine}
+        Siano $A,B$ due insiemi totalmente ordinati. Un \emph{isomorfismo d'ordine} è una mappa $\varphi: A \rightarrow B$ biettiva e tale che per ogni $x,y \in A$ \[x<y \mbox{ se e solo se } \varphi(x)<\varphi(y)\]
+    \end{block} \pause
+    \begin{block}{Famglia degli automorfismi d'ordine}
+        \[ \aut = \left\lbrace \varphi \centering\mid \varphi: \Q \rightarrow \Q, \; \varphi \mbox{ isomorfismo d'ordine} \right\rbrace \]
+    \end{block} \pause
+    \begin{center}
+        Tale famiglia, dotata dell'operazione di composizione, forma un gruppo.
+    \end{center}
+\end{frame}
+\begin{frame}
+    \begin{block}{\Gsp}
+        Dati un gruppo $G$ e un insieme $\Omega$, si dice che $G$ agisce su $\Omega$, o che $\Omega$ è un $G$-spazio se è dato un morfismo di gruppi
+        \large{\[ \varphi:G \rightarrow \mathrm{Sym}(\Omega)\]}
+        \normalsize Poniamo $\alpha^g=\varphi(g)(\alpha)$.
+    \end{block}
+\end{frame}
+
+\subsection[Proprietà di $\aut$]{Proprietà della famiglia degli automorfismi d'ordine}
+\begin{frame}
+    \frametitle{Proprietà di $\aut$}
+    \pause
+    \begin{block}{\Gsp transitivo}
+            Sia $\Omega$ un $G$-spazio. Si definisce $\Omega$ un \emph{\Gsp transitivo} se per ogni $\alpha,\beta \in \Omega$ esiste $g \in G$ tale che $\alpha^g=\beta$.
+    \end{block} \pause
+    \medskip È possibile generalizzare tale proprietà nel seguente modo: \pause
+    \medskip
+    \begin{block}{\Gsp $k$-transitivo}
+        Sia $k \in \N$. Un \Gsp è \emph{$k$-transitivo} se, dati due insiemi qualsiasi di $k$ elementi distinti di $\Omega$ $\{\alpha_1,\alpha_2,\dotsc,\alpha_k\}$, $\{\beta_1,\beta_2,\dotsc,\beta_k\}$, esiste $g \in G$ tale che $\alpha_i^g=\beta_i$ per $i=1,\dotsc,k$.
+    \end{block}
+\end{frame}
+\begin{frame}
+    \begin{block}{\Gsp $k$-omogeneo}
+        Sia $k \in \N$. Un \Gsp $\Omega$ è \emph{$k$-omogeneo} se per qualsiasi sottoinsieme $\Gamma,\Delta \subseteq \Omega$ con $|\Gamma|=|\Delta|=k$ si ha $\Gamma^g=\Delta$ per qualche $g \in G$.
+    \end{block} \pause
+
+    \medskip Sia $G=\aut$ e $\Omega=\Q$. Si consideri l'azione di $\aut$ su $\Q$.
+    \begin{alertblock}{Teorema}
+        $\Q$ è un \Gsp $k$-omogeneo per ogni $k \in \N$.
+    \end{alertblock} \pause
+    La dimostrazione del teorema è costruttiva e consiste nella costruzione esplicita di un automorfismo $\varphi$ tale che $\varphi(\Gamma)=\Delta$.
+\end{frame}
+\begin{frame}
+    Nelle notazioni precedenti, si ha inoltre:\pause
+    \begin{alertblock}{Teorema}
+        $\Q$ è un \Gsp transitivo.
+    \end{alertblock} \pause
+    Tuttavia:
+    \begin{alertblock}{Teorema}
+        $\Q$ non è un \Gsp 2-transitivo.
+    \end{alertblock} \pause
+    Data una coppia di razionali distinti $\{p,q\}$ con $p<q$, non esiste un automorfismo d'ordine $\varphi$ di $\Q$ tale che $\varphi(p)=q$ e $\varphi(q)=p$.
+\end{frame}
+\subsection{Primitività}
+\begin{frame}
+    \frametitle{Primitività}
+    Sia $\Omega$ un \Gsp transitivo. \pause
+    \begin{block}{Blocco di un \Gsp}
+         Sia $\Delta \subseteq \Omega$ con $\Delta \neq \emptyset$. Allora $\Delta$ è un \emph{blocco} se per ogni $g \in G$, $\Delta \cap \Delta^g \neq \emptyset$ implica $\Delta=\Delta^g$.
+    \end{block} \pause
+    In un \Gsp transitivo $\Omega$, i singoletti e $\Omega$ stesso sono sempre dei blocchi. Tali blocchi sono detti \emph{banali}. \pause
+    \medskip
+    \begin{block}{\Gsp primitivo}
+        $\Omega$ è un \Gsp \emph{primitivo} se ogni blocco di $\Omega$ è banale.
+    \end{block}
+\end{frame}
+\begin{frame}
+    \begin{alertblock}{Teorema}
+        Un \Gsp 2-omogeneo è primitivo.
+    \end{alertblock} \pause
+    \bigskip Per quanto già mostrato:
+    \begin{alertblock}{Corollario}
+        $\Q$ è un \Gsp primitivo.
+    \end{alertblock}
+\end{frame}
+
+%%%%%%%%%%   SEZIONE   SECONDA   %%%%%%%%%
+\section{Teorema di Cantor}
+\subsection{Teorema di Cantor}
+\begin{frame}
+    \frametitle{Teorema di Cantor}
+    \begin{alertblock}{Teorema di Cantor}
+        Per ogni insieme $A$ numerabile, totalmente ordinato, denso e senza estremi esiste un isomorfismo d'ordine $\varphi: \Q \rightarrow A$.
+    \end{alertblock} \pause
+    \medskip Per la dimostrazione sono state fornite due diverse argomentazioni: \pause
+    \bigskip
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \centering
+            \bf{Going forth}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \centering
+            \bf{Back and forth}
+        \end{column}
+    \end{columns}
+\end{frame}
+\begin{frame}
+    Differenze principali tra le due argomentazioni:
+    \begin{itemize}
+        \item In \emph{going forth} ad ogni passo viene fissata l'immagine di ciascun elemento di $\Q$ tramite $\varphi$. \pause
+        \item In \emph{back and forth} ad ogni passo dispari viene fissata l'immagine tramite $\varphi$ di un elemento di $\Q$ e ad ogni passo pari viene fissata la controimmagine di un elemento di $A$.
+    \end{itemize} \pause
+    La seguente proposizione può essere dimostrata solo con una tecnica di tipo \emph{back and forth}: \pause
+    \begin{alertblock}{Proposizione}
+        Sia $A$ un sottoinsieme denso di $\Q$ tale che il suo complementare sia ancora un sottoinsieme denso. Allora esiste un automorfismo d'ordine $\varphi$ di $\Q$ tale che ${\varphi|_A}$ è un automorfismo d'ordine di $A$.
+    \end{alertblock}
+\end{frame}
+\begin{frame}
+    Il Teorema di Cantor non è generalizzabile ad insiemi non numerabili, infatti:
+    \begin{alertblock}{Proposizione}
+        Non esiste un isomorfismo d'ordine tra $\R$ ed $\R\0$.
+    \end{alertblock}
+\end{frame}
+
+\subsection[Cardinalità di $\aut$]{Cardinalità della famiglia degli automorsfimi d'ordine dei razionali}
+\begin{frame}
+    \frametitle{Cardinalità di $\aut$}
+    \begin{block}{$\Z$-sequenza}
+        Una $\Z$-sequenza in $\Q$ è una sequenza $\left\{\xi_n \right\}_{n \in \Z}$ di razionali tali che $\xi_n<\xi_{n+1}$ per ogni $n$ e tale che $\xi_n \rightarrow \pm \infty$ per $n \rightarrow \pm \infty$.
+    \end{block} \pause
+    Determiniamo la cardinalità dell'insieme delle $\Z$-sequenze in $\Q$:
+    \begin{alertblock}{Teorema}
+    L'insieme delle $\Z$-sequenze in $\Q$ ha cardinalità maggiore o uguale a $2^{\aleph_0}$.            
+    \end{alertblock}
+\end{frame}
+\begin{frame}
+    Se $A$ è un sottoinsieme infinito di $\Z$ e $\xi_A=\left(\xi_n\right)_{n \in \Z}$ la $\Z$-sequenza tale che: \pause
+    \[\xi_n=\begin{cases}n & \mbox{ se } n \in A \\ n-\frac{1}{2} & \mbox{ se } n \notin A \end{cases}\] \pause
+    Allora la mappa $A \mapsto \xi_A$ è iniettiva.
+\end{frame}
+\begin{frame}
+\begin{alertblock}{Proposizione}
+$\aut$ agisce transitivamente sull'insieme delle $\Z$-sequenze in $\Q$.
+\end{alertblock} \pause
+\medskip Si fissi una $\Z$-sequenza $\xi=\left(\xi_n\right)_{n \in \Z}$. \pause
+Si scelga a piacere una seconda $\Z$-sequenza $\left(\eta_n\right)_{n \in \Z}$. \pause
+
+\medskip Si considerino in $\R$ gli intervalli $\left[\xi_{n},\xi_{n+1}\right)$ e $\left[\eta_{n},\eta_{n+1}\right)$ al variare di $n$. L'unica trasformazione lineare crescente da $\left[\xi_{n},\xi_{n+1}\right)$ a $\left[\eta_{n},\eta_{n+1}\right)$ è un isomorfismo d'ordine e in particolare lo è anche la sua restrizione $\varphi_n$ a $\Q$.
+
+\end{frame}
+\begin{frame}
+    Definiamo $g: \Q \rightarrow \Q$ tale che $g|_{\left[\xi_{n},\xi_{n+1}\right)}=\varphi_n$. \pause
+
+    \medskip Si ha $g \in \aut$. \pause
+    \medskip
+    \begin{alertblock}{Teorema}
+        $\aut$ ha cardinalità $2^{\aleph_0}$.
+    \end{alertblock}
+\end{frame}
+
+% Diapositiva finale
+\miniframesoff
+\subsection*{}
+\begin{frame}
+    \begin{center}
+    \LARGE{\slshape{Grazie per l'attenzione!}}
+    \end{center}
+\end{frame}
+
+% Indice dei contenuti
+\begin{frame}{Indice}
+    \tableofcontents
+\end{frame}
+
+% Fine documento
+\end{document}
